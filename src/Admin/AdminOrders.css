@@ -1,0 +1,45 @@
+.admin-orders {
+  padding: 30px;
+  min-height: 100vh;
+  background: #f5f7fb;
+}
+
+.admin-orders h1 {
+  margin-bottom: 5px;
+}
+
+.admin-orders p {
+  color: #777;
+}
+
+.orders-container {
+  margin-top: 25px;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  overflow-x: auto;
+}
+
+.orders-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.orders-container th,
+.orders-container td {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.order-status {
+  background: #fff3cd;
+  color: #856404;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+.orders-container select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}

@@ -1,0 +1,96 @@
+.otp-page {
+  min-height: 100vh;
+
+  padding: 50px 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  background: #f7f8f7;
+}
+
+.otp-container {
+  width: 100%;
+  max-width: 450px;
+
+  background: white;
+
+  padding: 40px 30px;
+
+  border-radius: 15px;
+
+  text-align: center;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.otp-container h1 {
+  margin-top: 0;
+  color: #222;
+}
+
+.otp-container p {
+  color: #777;
+  margin-bottom: 25px;
+}
+
+.otp-container input {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 15px;
+
+  font-size: 22px;
+
+  text-align: center;
+
+  letter-spacing: 8px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 8px;
+
+  outline: none;
+}
+
+.otp-container input:focus {
+  border-color: #228b22;
+}
+
+.otp-container button {
+  width: 100%;
+
+  margin-top: 20px;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #228b22;
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.otp-container button:hover {
+  background: #176d17;
+}
+
+.demo-otp {
+  margin-top: 20px;
+
+  font-size: 14px;
+
+  color: #228b22 !important;
+
+  font-weight: 600;
+}

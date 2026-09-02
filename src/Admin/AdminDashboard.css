@@ -1,0 +1,250 @@
+* {
+  box-sizing: border-box;
+}
+
+.admin-layout {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  background: #f5f7fb;
+  font-family: Arial, sans-serif;
+}
+
+/* ================= SIDEBAR ================= */
+
+.admin-sidebar {
+  width: 320px;
+  min-height: 100vh;
+  padding: 30px 24px;
+
+  background: linear-gradient(
+    180deg,
+    #101827 0%,
+    #15233c 45%,
+    #1d6f9e 100%
+  );
+
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+/* ================= BACK BUTTON ================= */
+
+.back-button {
+  width: 48px;
+  height: 48px;
+
+  border: none;
+  background: transparent;
+
+  color: white;
+  font-size: 32px;
+
+  cursor: pointer;
+  text-align: left;
+
+  margin-bottom: 35px;
+
+  transition: 0.3s;
+}
+
+.back-button:hover {
+  transform: translateX(-5px);
+}
+
+/* ================= LOGO ================= */
+
+.admin-logo {
+  margin-bottom: 40px;
+}
+
+.admin-logo h1 {
+  margin: 0;
+
+  font-size: 34px;
+  font-weight: 700;
+
+  color: white;
+}
+
+.admin-logo p {
+  margin-top: 8px;
+
+  color: #d7e3f4;
+  font-size: 16px;
+}
+
+/* ================= MENU ================= */
+
+.admin-menu {
+  display: flex;
+  flex-direction: column;
+
+  gap: 14px;
+}
+
+.menu-item {
+  width: 100%;
+
+  border: none;
+  background: transparent;
+
+  color: white;
+
+  padding: 18px 20px;
+  border-radius: 14px;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+
+  position: relative;
+
+  transition: 0.3s;
+}
+
+.menu-item:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ACTIVE WHITE BUTTON */
+
+.menu-item.active {
+  background: white;
+  color: #1f2937;
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* BLUE ACTIVE LINE */
+
+.menu-item.active::before {
+  content: "";
+
+  position: absolute;
+
+  left: -24px;
+
+  width: 6px;
+  height: 42px;
+
+  background: #39a9ff;
+
+  border-radius: 0 10px 10px 0;
+}
+
+/* BLUE CIRCLE */
+
+.menu-item.active::after {
+  content: "";
+
+  position: absolute;
+
+  left: -31px;
+
+  width: 18px;
+  height: 18px;
+
+  background: #39a9ff;
+
+  border-radius: 50%;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+}
+
+.menu-icon {
+  width: 25px;
+
+  font-size: 22px;
+
+  text-align: center;
+}
+
+/* ================= LOGOUT ================= */
+
+.logout-button {
+  margin-top: auto;
+
+  border: none;
+  background: transparent;
+
+  color: white;
+
+  padding: 18px;
+
+  font-size: 17px;
+
+  cursor: pointer;
+
+  display: flex;
+
+  gap: 15px;
+
+  align-items: center;
+}
+
+/* ================= MAIN ================= */
+
+.admin-main {
+  margin-left: 320px;
+
+  width: calc(100% - 320px);
+
+  min-height: 100vh;
+
+  padding: 45px 55px;
+
+  background: #f7f9fc;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1100px) {
+
+  .admin-sidebar {
+    width: 260px;
+  }
+
+  .admin-main {
+    margin-left: 260px;
+    width: calc(100% - 260px);
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  .admin-layout {
+    flex-direction: column;
+  }
+
+  .admin-sidebar {
+    position: relative;
+
+    width: 100%;
+    min-height: auto;
+  }
+
+  .admin-main {
+    margin-left: 0;
+
+    width: 100%;
+
+    padding: 25px;
+  }
+
+}

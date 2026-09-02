@@ -1,0 +1,47 @@
+.admin-categories {
+  padding: 30px;
+  background: #f5f7fb;
+  min-height: 100vh;
+}
+
+.category-form {
+  display: flex;
+  gap: 10px;
+  margin: 25px 0;
+}
+
+.category-form input {
+  padding: 12px;
+  width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.category-form button {
+  background: #198754;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 6px;
+}
+
+.category-list {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.category-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.category-item button {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 5px;
+}

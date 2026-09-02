@@ -1,0 +1,373 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Admin",
+      "email": "admin@gmail.com",
+      "password": "123456",
+      "role": "admin",
+      "createdAt": "31/8/2026, 9:00:00 am"
+    },
+    {
+      "id": "2",
+      "name": "User",
+      "email": "user@gmail.com",
+      "password": "123456",
+      "role": "user",
+      "createdAt": "31/8/2026, 9:30:00 am"
+    }
+  ],
+  "orders": [
+    {
+      "orderId": "ORD1788121572322",
+      "items": [
+        {
+          "id": "3",
+          "name": "Fresh Tomatoes",
+          "category": "Vegetables",
+          "price": 40,
+          "image": "https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&fit=crop&w=500&q=80",
+          "quantity": 1
+        },
+        {
+          "id": "2",
+          "name": "Fresh Bananas",
+          "category": "Fruits",
+          "price": 50,
+          "image": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=500&q=80",
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 90,
+      "paymentMethod": "Cash on Delivery",
+      "status": "Order Confirmed",
+      "createdAt": "31/8/2026, 1:56:12 am",
+      "id": "s39s7qxerT8"
+    },
+    {
+      "orderId": "ORD1788150322221",
+      "items": [
+        {
+          "id": "1",
+          "name": "Fresh Apples",
+          "category": "Fruits",
+          "price": 120,
+          "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=500&q=80",
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 120,
+      "paymentMethod": "Cash on Delivery",
+      "status": "Order Confirmed",
+      "createdAt": "31/8/2026, 9:55:22 am",
+      "id": "6aWXr7PkmrA"
+    },
+    {
+      "orderId": "ORD1788164663962",
+      "items": [
+        {
+          "id": "2",
+          "name": "Fresh Bananas",
+          "category": "Fruits",
+          "price": 50,
+          "stock": 80,
+          "image": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=500&q=80",
+          "createdAt": "31/8/2026, 9:05:00 am",
+          "quantity": 1
+        },
+        {
+          "id": "3",
+          "name": "Fresh Tomatoes",
+          "category": "Vegetables",
+          "price": 40,
+          "stock": 60,
+          "image": "https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&fit=crop&w=500&q=80",
+          "createdAt": "31/8/2026, 9:10:00 am",
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 90,
+      "paymentMethod": "Cash on Delivery",
+      "status": "Order Confirmed",
+      "createdAt": "31/8/2026, 1:54:23 pm",
+      "id": "kqDeUZgShDI"
+    },
+    {
+      "orderId": "ORD1788188761799",
+      "items": [
+        {
+          "id": "3",
+          "name": "Fresh Tomatoes",
+          "category": "Vegetables",
+          "price": 40,
+          "stock": 60,
+          "image": "https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&fit=crop&w=500&q=80",
+          "createdAt": "31/8/2026, 9:10:00 am",
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 40,
+      "paymentMethod": "Cash on Delivery",
+      "status": "Order Confirmed",
+      "createdAt": "31/8/2026, 8:36:01 pm",
+      "id": "0z4ZYfHVKcA"
+    },
+    {
+      "orderId": "ORD1788340403728",
+      "items": [
+        {
+          "id": "1",
+          "name": "Fresh Apples",
+          "category": "Fruits",
+          "price": 120,
+          "stock": 50,
+          "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=500&q=80",
+          "createdAt": "31/8/2026, 9:00:00 am",
+          "quantity": 1
+        },
+        {
+          "id": "2",
+          "name": "Fresh Bananas",
+          "category": "Fruits",
+          "price": 50,
+          "stock": 80,
+          "image": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=500&q=80",
+          "createdAt": "31/8/2026, 9:05:00 am",
+          "quantity": 2
+        }
+      ],
+      "totalAmount": 220,
+      "paymentMethod": "Cash on Delivery",
+      "status": "Order Confirmed",
+      "createdAt": "2/9/2026, 2:43:23 pm",
+      "id": "LWSJQ4qjHDc"
+    },
+    {
+      "orderId": "ORD1788340503527",
+      "items": [
+        {
+          "id": "1",
+          "name": "Fresh Apples",
+          "category": "Fruits",
+          "price": 120,
+          "stock": 50,
+          "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=500&q=80",
+          "createdAt": "31/8/2026, 9:00:00 am",
+          "quantity": 1
+        },
+        {
+          "id": "2",
+          "name": "Fresh Bananas",
+          "category": "Fruits",
+          "price": 50,
+          "stock": 80,
+          "image": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=500&q=80",
+          "createdAt": "31/8/2026, 9:05:00 am",
+          "quantity": 2
+        },
+        {
+          "id": "3",
+          "name": "Fresh Tomatoes",
+          "category": "Vegetables",
+          "price": 40,
+          "stock": 60,
+          "image": "https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&fit=crop&w=500&q=80",
+          "createdAt": "31/8/2026, 9:10:00 am",
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 260,
+      "paymentMethod": "Cash on Delivery",
+      "status": "Order Confirmed",
+      "createdAt": "2/9/2026, 2:45:03 pm",
+      "id": "V-ue1M_EpYs"
+    }
+  ],
+  "payments": [
+    {
+      "orderId": "ORD1788121572322",
+      "amount": 90,
+      "paymentMethod": "Cash on Delivery",
+      "status": "Success",
+      "createdAt": "31/8/2026, 1:56:15 am",
+      "id": "donw2m84BE0"
+    },
+    {
+      "orderId": "ORD1788150322221",
+      "amount": 120,
+      "paymentMethod": "Cash on Delivery",
+      "status": "Success",
+      "createdAt": "31/8/2026, 9:55:25 am",
+      "id": "c0Q2GwzL070"
+    },
+    {
+      "orderId": "ORD1788164663962",
+      "amount": 90,
+      "paymentMethod": "Cash on Delivery",
+      "status": "Success",
+      "id": "ZfC5SAy_ebc"
+    },
+    {
+      "orderId": "ORD1788188761799",
+      "amount": 40,
+      "paymentMethod": "Cash on Delivery",
+      "status": "Success",
+      "id": "4asDIBzvL2I"
+    },
+    {
+      "orderId": "ORD1788340403728",
+      "amount": 220,
+      "paymentMethod": "Cash on Delivery",
+      "status": "Success",
+      "id": "d8LFR_-GzAA"
+    },
+    {
+      "orderId": "ORD1788340503527",
+      "amount": 260,
+      "paymentMethod": "Cash on Delivery",
+      "status": "Success",
+      "id": "AGlUQy1aop8"
+    }
+  ],
+  "otps": [],
+  "cart": [],
+  "wishlist": [],
+  "products": [
+    {
+      "id": "2",
+      "name": "Fresh Bananas",
+      "category": "Fruits",
+      "price": 50,
+      "stock": 80,
+      "image": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=500&q=80",
+      "createdAt": "31/8/2026, 9:05:00 am"
+    },
+    {
+      "id": "3",
+      "name": "Fresh Tomatoes",
+      "category": "Vegetables",
+      "price": 40,
+      "stock": 60,
+      "image": "https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&fit=crop&w=500&q=80",
+      "createdAt": "31/8/2026, 9:10:00 am"
+    },
+    {
+      "id": "4",
+      "name": "Fresh Carrots",
+      "category": "Vegetables",
+      "price": 60,
+      "stock": 45,
+      "image": "https://images.unsplash.com/photo-1447175008436-054170c2e979?auto=format&fit=crop&w=500&q=80",
+      "createdAt": "31/8/2026, 9:15:00 am"
+    },
+    {
+      "id": "5",
+      "name": "Fresh Milk",
+      "category": "Dairy",
+      "price": 65,
+      "stock": 35,
+      "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=500&q=80",
+      "createdAt": "31/8/2026, 9:20:00 am"
+    },
+    {
+      "id": "6",
+      "name": "Cheese",
+      "category": "Dairy",
+      "price": 180,
+      "stock": 25,
+      "image": "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=500&q=80",
+      "createdAt": "31/8/2026, 9:25:00 am"
+    },
+    {
+      "id": "7",
+      "name": "Bread",
+      "category": "Bakery",
+      "price": 45,
+      "stock": 40,
+      "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=500&q=80",
+      "createdAt": "31/8/2026, 9:30:00 am"
+    },
+    {
+      "id": "8",
+      "name": "Rice",
+      "category": "Rice & Grains",
+      "price": 90,
+      "stock": 100,
+      "image": "https://images.unsplash.com/photo-1586208958839-06c17cacdf08?auto=format&fit=crop&w=500&q=80",
+      "createdAt": "31/8/2026, 9:35:00 am"
+    },
+    {
+      "id": "9",
+      "name": "Cooking Oil",
+      "category": "Oils & Ghee",
+      "price": 160,
+      "stock": 55,
+      "image": "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=500&q=80",
+      "createdAt": "31/8/2026, 9:40:00 am"
+    },
+    {
+      "id": "10",
+      "name": "Potato Chips",
+      "category": "Snacks",
+      "price": 30,
+      "stock": 90,
+      "image": "https://images.unsplash.com/photo-1566478989037-eec170784d0b?auto=format&fit=crop&w=500&q=80",
+      "createdAt": "31/8/2026, 9:45:00 am"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Fruits",
+      "createdAt": "31/8/2026, 9:00:00 am"
+    },
+    {
+      "id": "2",
+      "name": "Vegetables",
+      "createdAt": "31/8/2026, 9:05:00 am"
+    },
+    {
+      "id": "3",
+      "name": "Dairy",
+      "createdAt": "31/8/2026, 9:10:00 am"
+    },
+    {
+      "id": "4",
+      "name": "Bakery",
+      "createdAt": "31/8/2026, 9:15:00 am"
+    },
+    {
+      "id": "5",
+      "name": "Rice & Grains",
+      "createdAt": "31/8/2026, 9:20:00 am"
+    },
+    {
+      "id": "6",
+      "name": "Oils & Ghee",
+      "createdAt": "31/8/2026, 9:25:00 am"
+    },
+    {
+      "id": "7",
+      "name": "Snacks",
+      "createdAt": "31/8/2026, 9:30:00 am"
+    },
+    {
+      "name": "rice",
+      "id": "_-N511xURyQ"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "1",
+      "userId": "2",
+      "userName": "User",
+      "productId": null,
+      "productName": "Fresh Apples",
+      "rating": 5,
+      "comment": "Very fresh and good quality!",
+      "status": "Approved",
+      "createdAt": "31/8/2026, 10:00:00 am"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

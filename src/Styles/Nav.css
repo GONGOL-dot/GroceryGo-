@@ -1,0 +1,540 @@
+/* =========================
+   NAVBAR MAIN
+========================= */
+
+.navbar {
+  width: 100%;
+  min-height: 100px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 10px 35px;
+  box-sizing: border-box;
+
+  background: #1f9d32;
+
+  position: relative;
+  z-index: 1000;
+
+  gap: 25px;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  text-decoration: none;
+
+  flex-shrink: 0;
+}
+
+
+/* BIG LOGO IMAGE */
+
+.logo-img {
+  width: 100px;
+  height: 80px;
+
+  object-fit: contain;
+
+  flex-shrink: 0;
+}
+
+
+/* LOGO TEXT */
+
+.logo-text {
+  color: white;
+
+  font-size: 30px;
+  font-weight: 800;
+
+  white-space: nowrap;
+
+  letter-spacing: 0.5px;
+}
+
+
+/* =========================
+   SEARCH BOX
+========================= */
+
+.search-box {
+  display: flex;
+  align-items: center;
+
+  background: white;
+
+  border-radius: 30px;
+
+  padding: 0 18px;
+
+  height: 48px;
+
+  width: 300px;
+
+  gap: 10px;
+
+  color: #555;
+
+  flex-shrink: 0;
+}
+
+
+.search-box input {
+  border: none;
+
+  outline: none;
+
+  width: 100%;
+
+  font-size: 16px;
+
+  background: transparent;
+}
+
+
+/* =========================
+   NAVIGATION LINKS
+========================= */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+
+  gap: 24px;
+
+  flex-shrink: 0;
+}
+
+
+.nav-links a {
+  text-decoration: none;
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  transition: 0.3s;
+}
+
+
+.nav-links a:hover {
+  color: #d9ffd9;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   RIGHT SIDE ACTIONS
+========================= */
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+
+  margin-left: auto;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================
+   LOGIN BUTTON
+========================= */
+
+.nav-login {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  border: none;
+
+  background: white;
+
+  color: #1f9d32;
+
+  padding: 12px 22px;
+
+  border-radius: 25px;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  transition: 0.3s;
+}
+
+
+.nav-login:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================
+   WISHLIST AND CART
+========================= */
+
+.nav-icon-btn {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  border: none;
+
+  background: transparent;
+
+  color: white;
+
+  cursor: pointer;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  padding: 8px 0;
+
+  transition: 0.3s;
+}
+
+
+.nav-icon-btn:hover {
+  color: #d9ffd9;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================
+   THREE LINES MENU
+========================================= */
+
+.menu-container {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  flex-shrink: 0;
+}
+
+
+.three-lines-btn {
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid white;
+
+  border-radius: 10px;
+
+  background: transparent;
+
+  color: white;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+
+.three-lines-btn:hover {
+  background: white;
+
+  color: #1f9d32;
+}
+
+
+/* =========================================
+   DROPDOWN MENU
+========================================= */
+
+.dropdown-menu {
+  position: absolute;
+
+  top: 58px;
+  right: 0;
+
+  width: 290px;
+
+  max-height: 520px;
+
+  overflow-y: auto;
+
+  background: white;
+
+  border-radius: 14px;
+
+  padding: 10px;
+
+  box-sizing: border-box;
+
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.22);
+
+  z-index: 9999;
+}
+
+
+/* MENU TITLE */
+
+.menu-title {
+  padding: 13px 14px;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  color: #1f9d32;
+
+  border-bottom: 1px solid #eeeeee;
+}
+
+
+/* =========================================
+   MENU OPTIONS
+========================================= */
+
+.menu-option {
+  width: 100%;
+
+  border: none;
+
+  background: transparent;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  padding: 14px;
+
+  box-sizing: border-box;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  color: #333;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  text-align: left;
+
+  transition: 0.2s;
+}
+
+
+.menu-option:hover {
+  background: #eef9f0;
+
+  color: #1f9d32;
+}
+
+
+.menu-option small {
+  margin-left: auto;
+
+  color: #888;
+
+  font-size: 12px;
+
+  font-weight: 400;
+}
+
+
+/* =========================================
+   VIDEO CALL OPTION
+========================================= */
+
+.video-menu-option {
+  background: #e5f7e8;
+
+  color: #1f9d32;
+
+  font-weight: 700;
+}
+
+
+.video-menu-option:hover {
+  background: #d5f0da;
+}
+
+
+/* =========================================
+   TABLET RESPONSIVE
+========================================= */
+
+@media screen and (max-width: 1200px) {
+
+  .navbar {
+    padding: 10px 20px;
+    gap: 15px;
+  }
+
+
+  .logo-img {
+    width: 80px;
+    height: 70px;
+  }
+
+
+  .logo-text {
+    font-size: 24px;
+  }
+
+
+  .search-box {
+    width: 220px;
+  }
+
+
+  .nav-links {
+    gap: 15px;
+  }
+
+
+  .nav-actions {
+    gap: 12px;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media screen and (max-width: 900px) {
+
+  .navbar {
+    flex-wrap: wrap;
+
+    height: auto;
+
+    padding: 15px 20px;
+  }
+
+
+  .nav-logo {
+    order: 1;
+  }
+
+
+  .nav-actions {
+    order: 2;
+
+    margin-left: auto;
+  }
+
+
+  .search-box {
+    width: 100%;
+
+    order: 4;
+  }
+
+
+  .nav-links {
+    order: 3;
+
+    width: 100%;
+
+    justify-content: center;
+  }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media screen and (max-width: 600px) {
+
+  .navbar {
+    padding: 12px 15px;
+  }
+
+
+  .logo-img {
+    width: 65px;
+    height: 60px;
+  }
+
+
+  .logo-text {
+    font-size: 20px;
+  }
+
+
+  .nav-links {
+    gap: 12px;
+
+    flex-wrap: wrap;
+  }
+
+
+  .nav-actions {
+    gap: 10px;
+  }
+
+
+  .nav-icon-btn span {
+    display: none;
+  }
+
+
+  .nav-login {
+    padding: 10px;
+  }
+
+
+  .nav-login {
+    font-size: 0;
+  }
+
+
+  .nav-login svg {
+    width: 20px;
+    height: 20px;
+  }
+
+
+  .dropdown-menu {
+    width: 270px;
+
+    right: -5px;
+  }
+
+}

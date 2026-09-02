@@ -1,0 +1,41 @@
+.admin-reviews {
+  padding: 30px;
+  background: #f5f7fb;
+  min-height: 100vh;
+}
+
+.reviews-container {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.review-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.review-card h3 {
+  margin-top: 0;
+}
+
+.rating {
+  color: #f59e0b;
+  margin-bottom: 10px;
+}
+
+.review-card button {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+
+@media (max-width: 900px) {
+  .reviews-container {
+    grid-template-columns: 1fr;
+  }
+}

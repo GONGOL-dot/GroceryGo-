@@ -1,0 +1,456 @@
+/* =====================================
+   REGISTER PAGE
+===================================== */
+
+.register-page {
+  width: 100%;
+  min-height: 100vh;
+
+  background-image: url("loginbg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  position: relative;
+}
+
+
+/* =====================================
+   OVERLAY
+===================================== */
+
+.register-overlay {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 50px 20px;
+
+  box-sizing: border-box;
+
+  background: rgba(255, 255, 255, 0.10);
+}
+
+
+/* =====================================
+   REGISTER BOX
+===================================== */
+
+.register-box {
+  width: 100%;
+  max-width: 600px;
+
+  position: relative;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  border-radius: 28px;
+
+  padding: 45px 60px 38px;
+
+  box-sizing: border-box;
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =====================================
+   BACK BUTTON
+===================================== */
+
+.back-btn {
+  position: absolute;
+
+  top: 22px;
+  left: 25px;
+
+  width: 42px;
+  height: 42px;
+
+  border: none;
+
+  background: transparent;
+
+  font-size: 30px;
+
+  color: #2f3742;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  transition: 0.3s;
+}
+
+
+.back-btn:hover {
+  background: #e8f5ee;
+
+  color: #198754;
+
+  transform: translateX(-3px);
+}
+
+
+/* =====================================
+   HEADING
+===================================== */
+
+.register-box h1 {
+  margin: 0 0 30px;
+
+  text-align: center;
+
+  font-size: 48px;
+
+  font-weight: 700;
+
+  color: #303743;
+
+  letter-spacing: 0.5px;
+}
+
+
+/* =====================================
+   SUBTITLE
+===================================== */
+
+.register-subtitle {
+  margin: 0 0 12px;
+
+  font-size: 18px;
+
+  color: #4f5358;
+
+  text-align: left;
+}
+
+
+/* =====================================
+   FORM GROUP
+===================================== */
+
+.form-group {
+  width: 100%;
+
+  margin-bottom: 16px;
+}
+
+
+/* =====================================
+   LABEL
+===================================== */
+
+.form-group > label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 17px;
+
+  font-weight: 600;
+
+  color: #343434;
+}
+
+
+/* =====================================
+   INPUTS
+===================================== */
+
+.form-group input,
+.form-group select {
+  width: 100%;
+
+  height: 58px;
+
+  padding: 0 20px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #bfc5ca;
+
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  font-size: 17px;
+
+  color: #333;
+
+  outline: none;
+
+  transition: 0.3s ease;
+}
+
+
+/* =====================================
+   PLACEHOLDER
+===================================== */
+
+.form-group input::placeholder {
+  color: #969da5;
+
+  font-size: 16px;
+}
+
+
+/* =====================================
+   INPUT FOCUS
+===================================== */
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #198754;
+
+  box-shadow:
+    0 0 0 3px rgba(25, 135, 84, 0.12);
+}
+
+
+/* =====================================
+   GENDER
+===================================== */
+
+.gender-group {
+  margin-bottom: 18px;
+}
+
+
+.gender-options {
+  display: flex;
+
+  align-items: center;
+
+  gap: 35px;
+
+  min-height: 28px;
+
+  padding-top: 3px;
+}
+
+
+.radio-label {
+  display: flex !important;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin: 0 !important;
+
+  font-size: 17px !important;
+
+  font-weight: 400 !important;
+
+  cursor: pointer;
+}
+
+
+.radio-label input[type="radio"] {
+  width: 18px !important;
+
+  height: 18px !important;
+
+  margin: 0 !important;
+
+  padding: 0 !important;
+
+  accent-color: #198754;
+
+  cursor: pointer;
+}
+
+
+.radio-label span {
+  color: #333;
+}
+
+
+/* =====================================
+   COUNTRY SELECT
+===================================== */
+
+.form-group select {
+  cursor: pointer;
+}
+
+
+/* =====================================
+   REGISTER BUTTON
+===================================== */
+
+.register-btn {
+  width: 100%;
+
+  height: 58px;
+
+  margin-top: 12px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: #198754;
+
+  color: white;
+
+  font-size: 20px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+
+  box-shadow:
+    0 6px 18px rgba(25, 135, 84, 0.25);
+}
+
+
+.register-btn:hover:not(:disabled) {
+  background: #126c43;
+
+  transform: translateY(-2px);
+}
+
+
+.register-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+
+.register-btn:disabled {
+  opacity: 0.7;
+
+  cursor: not-allowed;
+}
+
+
+/* =====================================
+   LOGIN LINK
+===================================== */
+
+.login-link {
+  margin: 24px 0 0;
+
+  text-align: center;
+
+  font-size: 17px;
+
+  color: #4f5358;
+}
+
+
+.login-link span {
+  margin-left: 7px;
+
+  color: #198754;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+
+.login-link span:hover {
+  color: #126c43;
+
+  text-decoration: underline;
+}
+
+
+/* =====================================
+   TABLET
+===================================== */
+
+@media (max-width: 768px) {
+
+  .register-overlay {
+    padding: 35px 18px;
+  }
+
+  .register-box {
+    max-width: 560px;
+
+    padding: 40px 40px 35px;
+  }
+
+  .register-box h1 {
+    font-size: 40px;
+  }
+
+  .back-btn {
+    top: 18px;
+    left: 18px;
+  }
+
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 500px) {
+
+  .register-overlay {
+    padding: 25px 12px;
+  }
+
+  .register-box {
+    padding: 55px 22px 30px;
+
+    border-radius: 20px;
+  }
+
+  .register-box h1 {
+    font-size: 32px;
+
+    margin-bottom: 22px;
+  }
+
+  .register-subtitle {
+    font-size: 16px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group > label {
+    font-size: 15px;
+  }
+
+  .form-group input,
+  .form-group select {
+    height: 50px;
+
+    font-size: 15px;
+  }
+
+  .gender-options {
+    gap: 25px;
+  }
+
+  .radio-label {
+    font-size: 15px !important;
+  }
+
+  .register-btn {
+    height: 52px;
+
+    font-size: 18px;
+  }
+
+}

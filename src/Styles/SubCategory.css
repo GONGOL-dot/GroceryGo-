@@ -1,0 +1,401 @@
+/* ===============================
+   SUBCATEGORY PAGE
+================================ */
+
+.subcategory-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 7%;
+  box-sizing: border-box;
+  background: #f8f8f8;
+}
+
+
+/* ===============================
+   BACK BUTTON
+================================ */
+
+.back-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+
+  padding: 11px 20px !important;
+  margin-bottom: 25px !important;
+
+  border: none !important;
+  border-radius: 7px !important;
+
+  background: #2e7d32 !important;
+  color: white !important;
+
+  font-size: 15px !important;
+  font-weight: 600 !important;
+
+  cursor: pointer !important;
+
+  transition: 0.3s ease !important;
+}
+
+.back-btn:hover {
+  background: #1b5e20 !important;
+  transform: translateX(-3px);
+}
+
+
+/* ===============================
+   BACK ARROW
+================================ */
+
+.back-arrow {
+  display: inline-block !important;
+
+  color: white !important;
+
+  font-size: 25px !important;
+  font-weight: bold !important;
+
+  line-height: 1 !important;
+}
+
+
+/* ===============================
+   HEADER
+================================ */
+
+.subcategory-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.subcategory-header h1 {
+  margin: 0 0 10px 0;
+  font-size: 34px !important;
+  font-weight: 700;
+  color: #222;
+}
+
+.subcategory-header p {
+  margin: 0;
+  font-size: 17px !important;
+  color: #666;
+}
+
+
+/* ===============================
+   PRODUCT GRID
+================================ */
+
+.subcategory-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 25px;
+}
+
+
+/* ===============================
+   PRODUCT CARD
+================================ */
+
+.subcategory-card {
+  position: relative;
+
+  width: 100%;
+
+  background: #ffffff;
+
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+
+  transition: 0.3s ease;
+}
+
+.subcategory-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ===============================
+   PRODUCT IMAGE BOX
+================================ */
+
+.subcategory-image-box {
+  position: relative;
+
+  width: 100%;
+  height: 220px;
+
+  overflow: hidden;
+
+  background: #f5f5f5;
+}
+
+
+/* ===============================
+   PRODUCT IMAGE
+================================ */
+
+.subcategory-image-box img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  transition: transform 0.3s ease;
+}
+
+.subcategory-card:hover .subcategory-image-box img {
+  transform: scale(1.04);
+}
+
+
+/* ===============================
+   WISHLIST HEART
+================================ */
+
+.subcategory-image-box .wishlist-heart {
+  position: absolute !important;
+
+  top: 12px !important;
+  right: 12px !important;
+
+  width: 42px !important;
+  height: 42px !important;
+
+  padding: 0 !important;
+
+  border: none !important;
+
+  border-radius: 50% !important;
+
+  background: #ffffff !important;
+
+  color: #e53935 !important;
+
+  display: flex !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+
+  font-size: 21px !important;
+
+  cursor: pointer !important;
+
+  z-index: 10 !important;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18) !important;
+
+  transition: 0.3s ease !important;
+}
+
+.subcategory-image-box .wishlist-heart:hover {
+  transform: scale(1.1) !important;
+}
+
+.subcategory-image-box .wishlist-heart svg {
+  width: 19px !important;
+  height: 19px !important;
+
+  color: #e53935 !important;
+  fill: #e53935 !important;
+}
+
+
+/* ===============================
+   PRODUCT INFO
+================================ */
+
+.subcategory-info {
+  padding: 15px;
+}
+
+
+/* ===============================
+   PRODUCT NAME
+================================ */
+
+.subcategory-info h3 {
+  margin: 0 0 7px 0;
+
+  font-size: 19px !important;
+
+  font-weight: 700;
+
+  color: #222;
+}
+
+
+/* ===============================
+   CATEGORY
+================================ */
+
+.subcategory-category {
+  margin: 0 0 7px 0;
+
+  font-size: 14px !important;
+
+  color: #777;
+}
+
+
+/* ===============================
+   PRICE
+================================ */
+
+.subcategory-info h4 {
+  margin: 0 0 14px 0;
+
+  font-size: 18px !important;
+
+  font-weight: 700;
+
+  color: #222;
+}
+
+
+/* ===============================
+   ADD TO CART BUTTON
+================================ */
+
+.subcategory-cart-btn {
+  width: 100% !important;
+
+  display: flex !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+
+  gap: 8px !important;
+
+  padding: 11px !important;
+
+  border: none !important;
+
+  border-radius: 6px !important;
+
+  background: #2e7d32 !important;
+
+  color: white !important;
+
+  font-size: 15px !important;
+
+  font-weight: 600 !important;
+
+  cursor: pointer !important;
+
+  transition: 0.3s ease !important;
+}
+
+.subcategory-cart-btn:hover {
+  background: #1b5e20 !important;
+}
+
+.subcategory-cart-btn svg {
+  width: 17px !important;
+  height: 17px !important;
+}
+
+
+/* ===============================
+   NO ITEMS
+================================ */
+
+.no-items {
+  width: 100%;
+
+  text-align: center;
+
+  padding: 60px 20px;
+
+  font-size: 18px;
+
+  color: #777;
+}
+
+
+/* ===============================
+   TABLET
+================================ */
+
+@media screen and (max-width: 1100px) {
+
+  .subcategory-page {
+    padding: 40px 5%;
+  }
+
+  .subcategory-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+}
+
+
+/* ===============================
+   MOBILE / TABLET
+================================ */
+
+@media screen and (max-width: 768px) {
+
+  .subcategory-page {
+    padding: 30px 5%;
+  }
+
+  .subcategory-header h1 {
+    font-size: 28px !important;
+  }
+
+  .subcategory-header p {
+    font-size: 15px !important;
+  }
+
+  .subcategory-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 16px;
+  }
+
+  .subcategory-image-box {
+    height: 190px;
+  }
+
+}
+
+
+/* ===============================
+   MOBILE
+================================ */
+
+@media screen and (max-width: 500px) {
+
+  .subcategory-page {
+    padding: 25px 15px;
+  }
+
+  .back-btn {
+    padding: 10px 16px !important;
+  }
+
+  .subcategory-grid {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+  .subcategory-image-box {
+    height: 230px;
+  }
+
+}
