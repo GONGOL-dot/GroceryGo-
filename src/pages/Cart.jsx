@@ -8,7 +8,7 @@ import {
 
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
-import "../Styles/Cartpage.css";
+import "../Styles/CartPage.css";
 
 function Cart() {
   const navigate = useNavigate();
