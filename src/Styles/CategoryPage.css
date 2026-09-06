@@ -1,171 +1,192 @@
-/* ===============================
-   CATEGORY PAGE
-================================ */
+/* ================= CATEGORY PAGE ================= */
 
 .category-page {
-  width: 100%;
+  position: relative;
   min-height: 100vh;
-  padding: 45px 7%;
-  box-sizing: border-box;
-  background: #f7f8f7;
+  padding: 40px 60px;
+  background: #f8f9f8;
 }
 
+/* ================= BACK ARROW ================= */
 
-/* ===============================
-   CATEGORY HEADER
-================================ */
+.back-arrow {
+  position: absolute;
+  top: 25px;
+  left: 30px;
+
+  width: 48px;
+  height: 48px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #ffffff;
+  color: #222;
+
+  font-size: 30px;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+
+  transition: 0.3s;
+
+  z-index: 10;
+}
+
+.back-arrow:hover {
+  transform: scale(1.1);
+  background: #f1f1f1;
+}
+
+/* ================= HEADER ================= */
 
 .category-header {
   text-align: center;
-  margin-bottom: 35px;
+  margin-bottom: 40px;
 }
 
 .category-header h1 {
   margin: 0 0 10px;
-  font-size: 34px;
+  font-size: 36px;
   font-weight: 700;
   color: #222;
 }
 
 .category-header p {
   margin: 0;
-  color: #666;
   font-size: 17px;
+  color: #777;
 }
 
-
-/* ===============================
-   CATEGORY GRID
-================================ */
+/* ================= CATEGORY GRID ================= */
 
 .category-grid {
-  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
+
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(220px, 1fr));
+
   gap: 25px;
 }
 
-
-/* ===============================
-   CATEGORY CARD
-================================ */
+/* ================= CATEGORY CARD ================= */
 
 .category-card {
-  width: 100%;
+  position: relative;
+
   height: 220px;
 
-  position: relative;
   overflow: hidden;
 
-  border-radius: 14px;
+  border-radius: 16px;
+
   cursor: pointer;
 
-  background: white;
+  background: #ffffff;
 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.1);
 
-  transition: transform 0.3s ease,
-              box-shadow 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .category-card:hover {
-  transform: translateY(-7px);
+  transform: translateY(-8px);
 
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.18);
 }
 
-
-/* ===============================
-   CATEGORY IMAGE
-================================ */
+/* ================= CATEGORY IMAGE ================= */
 
 .category-card img {
   width: 100%;
   height: 100%;
 
   object-fit: cover;
+
   display: block;
 
-  transition: transform 0.4s ease;
+  transition: 0.4s ease;
 }
 
 .category-card:hover img {
-  transform: scale(1.08);
+  transform: scale(1.1);
 }
 
-
-/* ===============================
-   IMAGE DARK OVERLAY
-================================ */
+/* ================= DARK OVERLAY ================= */
 
 .category-card::after {
   content: "";
 
   position: absolute;
-  left: 0;
-  bottom: 0;
 
-  width: 100%;
-  height: 55%;
+  inset: 0;
 
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.75),
-    rgba(0, 0, 0, 0)
-  );
+  background:
+    linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.05)
+    );
 
   pointer-events: none;
 }
 
-
-/* ===============================
-   CATEGORY NAME
-================================ */
+/* ================= CATEGORY NAME ================= */
 
 .category-name {
   position: absolute;
 
   left: 0;
+  right: 0;
   bottom: 0;
 
-  width: 100%;
-
-  padding: 18px;
-
-  box-sizing: border-box;
+  padding: 20px;
 
   color: white;
 
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 700;
 
   text-align: center;
 
   z-index: 2;
+
+  text-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-
-/* ===============================
-   TABLET
-================================ */
-
-@media (max-width: 1100px) {
-
-  .category-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-}
-
-
-/* ===============================
-   MOBILE / TABLET
-================================ */
+/* ================= RESPONSIVE ================= */
 
 @media (max-width: 768px) {
 
   .category-page {
-    padding: 35px 5%;
+    padding: 30px 20px;
+  }
+
+  .back-arrow {
+    top: 15px;
+    left: 15px;
+
+    width: 42px;
+    height: 42px;
+
+    font-size: 26px;
+  }
+
+  .category-header {
+    margin-top: 35px;
+    margin-bottom: 30px;
   }
 
   .category-header h1 {
@@ -177,37 +198,30 @@
   }
 
   .category-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    gap: 15px;
   }
 
   .category-card {
-    height: 200px;
+    height: 160px;
+    border-radius: 12px;
   }
 
+  .category-name {
+    padding: 12px;
+    font-size: 16px;
+  }
 }
 
-
-/* ===============================
-   SMALL MOBILE
-================================ */
-
-@media (max-width: 500px) {
-
-  .category-page {
-    padding: 25px 5%;
-  }
+@media (max-width: 480px) {
 
   .category-grid {
     grid-template-columns: 1fr;
   }
 
   .category-card {
-    height: 230px;
+    height: 190px;
   }
-
-  .category-name {
-    font-size: 19px;
-  }
-
 }

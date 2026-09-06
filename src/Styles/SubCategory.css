@@ -1,149 +1,113 @@
-/* ===============================
-   SUBCATEGORY PAGE
-================================ */
-
 .subcategory-page {
-  width: 100%;
+  position: relative;
   min-height: 100vh;
-  padding: 40px 7%;
-  box-sizing: border-box;
-  background: #f8f8f8;
+  padding: 40px 60px;
+  background: #f8f9f8;
 }
 
+/* ================= BACK ARROW ================= */
 
-/* ===============================
-   BACK BUTTON
-================================ */
+.subcategory-back-arrow {
+  position: absolute;
+  top: 25px;
+  left: 30px;
 
-.back-btn {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 8px !important;
+  width: 45px;
+  height: 45px;
 
-  padding: 11px 20px !important;
-  margin-bottom: 25px !important;
+  border: none;
+  border-radius: 50%;
 
-  border: none !important;
-  border-radius: 7px !important;
+  background: #ffffff;
+  color: #222;
 
-  background: #2e7d32 !important;
-  color: white !important;
+  font-size: 28px;
+  font-weight: bold;
 
-  font-size: 15px !important;
-  font-weight: 600 !important;
+  cursor: pointer;
 
-  cursor: pointer !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  transition: 0.3s ease !important;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+
+  z-index: 100;
+
+  transition: 0.3s;
 }
 
-.back-btn:hover {
-  background: #1b5e20 !important;
-  transform: translateX(-3px);
+.subcategory-back-arrow:hover {
+  transform: scale(1.1);
+  background: #f0f0f0;
 }
 
-
-/* ===============================
-   BACK ARROW
-================================ */
-
-.back-arrow {
-  display: inline-block !important;
-
-  color: white !important;
-
-  font-size: 25px !important;
-  font-weight: bold !important;
-
-  line-height: 1 !important;
-}
-
-
-/* ===============================
-   HEADER
-================================ */
+/* ================= HEADER ================= */
 
 .subcategory-header {
   text-align: center;
-  margin-bottom: 35px;
+  margin-bottom: 40px;
 }
 
 .subcategory-header h1 {
-  margin: 0 0 10px 0;
-  font-size: 34px !important;
-  font-weight: 700;
+  font-size: 34px;
+  margin-bottom: 8px;
   color: #222;
 }
 
 .subcategory-header p {
-  margin: 0;
-  font-size: 17px !important;
-  color: #666;
+  font-size: 16px;
+  color: #777;
 }
 
-
-/* ===============================
-   PRODUCT GRID
-================================ */
+/* ================= PRODUCTS GRID ================= */
 
 .subcategory-grid {
-  width: 100%;
-
   display: grid;
 
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns:
+    repeat(auto-fit, minmax(230px, 1fr));
 
   gap: 25px;
+
+  max-width: 1200px;
+  margin: auto;
 }
 
-
-/* ===============================
-   PRODUCT CARD
-================================ */
+/* ================= PRODUCT CARD ================= */
 
 .subcategory-card {
-  position: relative;
+  background: white;
 
-  width: 100%;
-
-  background: #ffffff;
-
-  border-radius: 12px;
+  border-radius: 15px;
 
   overflow: hidden;
 
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.08);
 
-  transition: 0.3s ease;
+  transition: 0.3s;
+
+  cursor: pointer;
 }
 
 .subcategory-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
 
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-
-/* ===============================
-   PRODUCT IMAGE BOX
-================================ */
+/* ================= IMAGE ================= */
 
 .subcategory-image-box {
   position: relative;
 
   width: 100%;
-  height: 220px;
+  height: 200px;
 
   overflow: hidden;
-
-  background: #f5f5f5;
 }
-
-
-/* ===============================
-   PRODUCT IMAGE
-================================ */
 
 .subcategory-image-box img {
   width: 100%;
@@ -151,251 +115,163 @@
 
   object-fit: cover;
 
-  display: block;
-
-  transition: transform 0.3s ease;
+  transition: 0.4s;
 }
 
-.subcategory-card:hover .subcategory-image-box img {
-  transform: scale(1.04);
+.subcategory-card:hover
+.subcategory-image-box img {
+  transform: scale(1.08);
 }
 
+/* ================= WISHLIST HEART ================= */
 
-/* ===============================
-   WISHLIST HEART
-================================ */
+.wishlist-heart {
+  position: absolute;
 
-.subcategory-image-box .wishlist-heart {
-  position: absolute !important;
+  top: 12px;
+  right: 12px;
 
-  top: 12px !important;
-  right: 12px !important;
+  width: 38px;
+  height: 38px;
 
-  width: 42px !important;
-  height: 42px !important;
+  border: none;
+  border-radius: 50%;
 
-  padding: 0 !important;
+  background: white;
 
-  border: none !important;
+  color: #e63946;
 
-  border-radius: 50% !important;
+  font-size: 20px;
 
-  background: #ffffff !important;
+  cursor: pointer;
 
-  color: #e53935 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  display: flex !important;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.15);
 
-  align-items: center !important;
-  justify-content: center !important;
-
-  font-size: 21px !important;
-
-  cursor: pointer !important;
-
-  z-index: 10 !important;
-
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18) !important;
-
-  transition: 0.3s ease !important;
+  transition: 0.3s;
 }
 
-.subcategory-image-box .wishlist-heart:hover {
-  transform: scale(1.1) !important;
+.wishlist-heart:hover {
+  transform: scale(1.15);
 }
 
-.subcategory-image-box .wishlist-heart svg {
-  width: 19px !important;
-  height: 19px !important;
-
-  color: #e53935 !important;
-  fill: #e53935 !important;
-}
-
-
-/* ===============================
-   PRODUCT INFO
-================================ */
+/* ================= PRODUCT INFO ================= */
 
 .subcategory-info {
-  padding: 15px;
+  padding: 18px;
 }
-
-
-/* ===============================
-   PRODUCT NAME
-================================ */
 
 .subcategory-info h3 {
-  margin: 0 0 7px 0;
+  margin: 0;
 
-  font-size: 19px !important;
-
-  font-weight: 700;
+  font-size: 19px;
 
   color: #222;
 }
-
-
-/* ===============================
-   CATEGORY
-================================ */
 
 .subcategory-category {
-  margin: 0 0 7px 0;
+  margin: 7px 0;
 
-  font-size: 14px !important;
+  color: #888;
 
-  color: #777;
+  font-size: 14px;
 }
-
-
-/* ===============================
-   PRICE
-================================ */
 
 .subcategory-info h4 {
-  margin: 0 0 14px 0;
+  margin: 10px 0 15px;
 
-  font-size: 18px !important;
+  font-size: 20px;
 
-  font-weight: 700;
-
-  color: #222;
+  color: #198754;
 }
 
-
-/* ===============================
-   ADD TO CART BUTTON
-================================ */
+/* ================= ADD TO CART ================= */
 
 .subcategory-cart-btn {
-  width: 100% !important;
+  width: 100%;
 
-  display: flex !important;
+  padding: 11px;
 
-  align-items: center !important;
-  justify-content: center !important;
+  border: none;
 
-  gap: 8px !important;
+  border-radius: 8px;
 
-  padding: 11px !important;
+  background: #198754;
 
-  border: none !important;
+  color: white;
 
-  border-radius: 6px !important;
+  font-size: 15px;
 
-  background: #2e7d32 !important;
+  cursor: pointer;
 
-  color: white !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  font-size: 15px !important;
+  gap: 8px;
 
-  font-weight: 600 !important;
-
-  cursor: pointer !important;
-
-  transition: 0.3s ease !important;
+  transition: 0.3s;
 }
 
 .subcategory-cart-btn:hover {
-  background: #1b5e20 !important;
+  transform: scale(1.02);
+
+  background: #146c43;
 }
 
-.subcategory-cart-btn svg {
-  width: 17px !important;
-  height: 17px !important;
-}
-
-
-/* ===============================
-   NO ITEMS
-================================ */
+/* ================= NO ITEMS ================= */
 
 .no-items {
-  width: 100%;
-
   text-align: center;
-
-  padding: 60px 20px;
 
   font-size: 18px;
 
   color: #777;
+
+  margin-top: 80px;
 }
 
+/* ================= MOBILE ================= */
 
-/* ===============================
-   TABLET
-================================ */
-
-@media screen and (max-width: 1100px) {
+@media (max-width: 768px) {
 
   .subcategory-page {
-    padding: 40px 5%;
+    padding: 30px 20px;
   }
 
-  .subcategory-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
+  .subcategory-back-arrow {
+    top: 15px;
+    left: 15px;
   }
 
-}
-
-
-/* ===============================
-   MOBILE / TABLET
-================================ */
-
-@media screen and (max-width: 768px) {
-
-  .subcategory-page {
-    padding: 30px 5%;
+  .subcategory-header {
+    margin-top: 40px;
   }
 
   .subcategory-header h1 {
-    font-size: 28px !important;
-  }
-
-  .subcategory-header p {
-    font-size: 15px !important;
+    font-size: 28px;
   }
 
   .subcategory-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns:
+      repeat(2, 1fr);
 
-    gap: 16px;
+    gap: 15px;
   }
 
   .subcategory-image-box {
-    height: 190px;
+    height: 150px;
   }
 
-}
-
-
-/* ===============================
-   MOBILE
-================================ */
-
-@media screen and (max-width: 500px) {
-
-  .subcategory-page {
-    padding: 25px 15px;
+  .subcategory-info {
+    padding: 12px;
   }
 
-  .back-btn {
-    padding: 10px 16px !important;
+  .subcategory-info h3 {
+    font-size: 16px;
   }
-
-  .subcategory-grid {
-    grid-template-columns: 1fr;
-
-    gap: 18px;
-  }
-
-  .subcategory-image-box {
-    height: 230px;
-  }
-
 }

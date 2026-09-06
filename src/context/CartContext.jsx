@@ -1,159 +1,293 @@
 import React, {
   createContext,
   useContext,
+  useEffect,
   useState,
 } from "react";
 
-const CartContext = createContext(null);
+const CartContext = createContext();
 
-export function useCart() {
-  const context = useContext(CartContext);
-
-  if (!context) {
-    throw new Error(
-      "useCart must be used inside CartProvider"
-    );
-  }
-
-  return context;
-}
-
-export function CartProvider({ children }) {
-  const [cartItems, setCartItems] = useState([]);
-  const [wishlistItems, setWishlistItems] = useState([]);
+export const CartProvider = ({ children }) => {
 
   // ================= CART =================
 
+  const [cartItems, setCartItems] = useState(() => {
+
+    const savedCart =
+      localStorage.getItem("cartItems");
+
+    return savedCart
+      ? JSON.parse(savedCart)
+      : [];
+
+  });
+
+
+  // ================= WISHLIST =================
+
+  const [wishlistItems, setWishlistItems] =
+    useState(() => {
+
+      const savedWishlist =
+        localStorage.getItem("wishlistItems");
+
+      return savedWishlist
+        ? JSON.parse(savedWishlist)
+        : [];
+
+    });
+
+
+  // ================= SAVE CART =================
+
+  useEffect(() => {
+
+    localStorage.setItem(
+      "cartItems",
+      JSON.stringify(cartItems)
+    );
+
+  }, [cartItems]);
+
+
+  // ================= SAVE WISHLIST =================
+
+  useEffect(() => {
+
+    localStorage.setItem(
+      "wishlistItems",
+      JSON.stringify(wishlistItems)
+    );
+
+  }, [wishlistItems]);
+
+
+  // ================= ADD TO CART =================
+
   const addToCart = (product) => {
-    if (!product) return;
 
-    setCartItems((prev) => {
-      const exists = prev.find(
-        (item) => String(item.id) === String(product.id)
-      );
+    setCartItems((previousItems) => {
 
-      if (exists) {
-        return prev.map((item) =>
-          String(item.id) === String(product.id)
-            ? {
-                ...item,
-                quantity: (item.quantity || 1) + 1,
-              }
-            : item
+      const existingProduct =
+        previousItems.find(
+          (item) =>
+            String(item.id) ===
+            String(product.id)
         );
+
+
+      // Product already exists
+
+      if (existingProduct) {
+
+        return previousItems.map(
+          (item) =>
+            String(item.id) ===
+            String(product.id)
+              ? {
+                  ...item,
+                  quantity:
+                    (item.quantity || 1) + 1,
+                }
+              : item
+        );
+
       }
 
+
+      // Add new product
+
       return [
-        ...prev,
+
+        ...previousItems,
+
         {
           ...product,
           quantity: 1,
         },
+
       ];
+
     });
+
   };
+
+
+  // ================= REMOVE FROM CART =================
 
   const removeFromCart = (id) => {
-    setCartItems((prev) =>
-      prev.filter(
-        (item) => String(item.id) !== String(id)
+
+    setCartItems((previousItems) =>
+
+      previousItems.filter(
+        (item) =>
+          String(item.id) !==
+          String(id)
       )
+
     );
+
   };
+
+
+  // ================= INCREASE QUANTITY =================
 
   const increaseQuantity = (id) => {
-    setCartItems((prev) =>
-      prev.map((item) =>
-        String(item.id) === String(id)
-          ? {
-              ...item,
-              quantity: (item.quantity || 1) + 1,
-            }
-          : item
+
+    setCartItems((previousItems) =>
+
+      previousItems.map(
+        (item) =>
+
+          String(item.id) ===
+          String(id)
+
+            ? {
+                ...item,
+
+                quantity:
+                  (item.quantity || 1) + 1,
+              }
+
+            : item
+
       )
+
     );
+
   };
+
+
+  // ================= DECREASE QUANTITY =================
 
   const decreaseQuantity = (id) => {
-    setCartItems((prev) =>
-      prev.map((item) =>
-        String(item.id) === String(id)
-          ? {
-              ...item,
-              quantity: Math.max(
-                1,
-                (item.quantity || 1) - 1
-              ),
-            }
-          : item
-      )
+
+    setCartItems((previousItems) =>
+
+      previousItems
+
+        .map(
+          (item) =>
+
+            String(item.id) ===
+            String(id)
+
+              ? {
+
+                  ...item,
+
+                  quantity:
+                    (item.quantity || 1) - 1,
+
+                }
+
+              : item
+
+        )
+
+        .filter(
+          (item) =>
+            item.quantity > 0
+        )
+
     );
+
   };
 
-  const clearCart = () => {
-    setCartItems([]);
-  };
 
-  // ================= WISHLIST =================
-
-  const addToWishlist = (product) => {
-    if (!product) return;
-
-    setWishlistItems((prev) => {
-      const exists = prev.some(
-        (item) => String(item.id) === String(product.id)
-      );
-
-      if (exists) return prev;
-
-      return [...prev, product];
-    });
-  };
-
-  const removeFromWishlist = (id) => {
-    setWishlistItems((prev) =>
-      prev.filter(
-        (item) => String(item.id) !== String(id)
-      )
-    );
-  };
+  // ================= TOGGLE WISHLIST =================
 
   const toggleWishlist = (product) => {
-    if (!product) return;
 
-    setWishlistItems((prev) => {
-      const exists = prev.some(
-        (item) => String(item.id) === String(product.id)
-      );
+    setWishlistItems((previousItems) => {
 
-      if (exists) {
-        return prev.filter(
-          (item) => String(item.id) !== String(product.id)
+      const alreadyExists =
+        previousItems.some(
+          (item) =>
+            String(item.id) ===
+            String(product.id)
         );
+
+
+      // Remove from wishlist
+
+      if (alreadyExists) {
+
+        return previousItems.filter(
+          (item) =>
+            String(item.id) !==
+            String(product.id)
+        );
+
       }
 
-      return [...prev, product];
+
+      // Add to wishlist
+
+      return [
+
+        ...previousItems,
+
+        product,
+
+      ];
+
     });
+
   };
 
+
+  // ================= CLEAR CART =================
+
+  const clearCart = () => {
+
+    setCartItems([]);
+
+  };
+
+
+  // ================= CONTEXT PROVIDER =================
+
   return (
+
     <CartContext.Provider
       value={{
+
+        // CART
+
         cartItems,
-        wishlistItems,
 
         addToCart,
+
         removeFromCart,
+
         increaseQuantity,
+
         decreaseQuantity,
+
         clearCart,
 
-        addToWishlist,
-        removeFromWishlist,
+
+        // WISHLIST
+
+        wishlistItems,
+
         toggleWishlist,
+
       }}
     >
+
       {children}
+
     </CartContext.Provider>
+
   );
-}
+
+};
+
+
+export const useCart = () => {
+
+  return useContext(CartContext);
+
+};

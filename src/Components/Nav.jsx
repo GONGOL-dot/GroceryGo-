@@ -25,12 +25,22 @@ function Nav() {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
 
+  // Search state
+  const [search, setSearch] = useState("");
+
   // 3 lines menu open / close
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleMenuNavigate = (path) => {
     navigate(path);
     setMenuOpen(false);
+  };
+
+  // Search function
+  const handleSearch = (e) => {
+    if (e.key === "Enter" && search.trim() !== "") {
+      navigate(`/search?query=${encodeURIComponent(search)}`);
+    }
   };
 
   // Current selected language
@@ -55,10 +65,8 @@ function Nav() {
           alt="GroceryGo Logo"
           className="logo-img"
         />
-
         <span className="logo-text"></span>
       </Link>
-
 
       {/* SEARCH */}
       <div className="search-box">
@@ -67,9 +75,11 @@ function Nav() {
         <input
           type="text"
           placeholder={t("search")}
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          onKeyDown={handleSearch}
         />
       </div>
-
 
       {/* NAVIGATION LINKS */}
       <div className="nav-links">
@@ -92,7 +102,6 @@ function Nav() {
 
       </div>
 
-
       {/* NAV ACTIONS */}
       <div className="nav-actions">
 
@@ -105,7 +114,6 @@ function Nav() {
           {t("login")}
         </button>
 
-
         {/* WISHLIST */}
         <button
           className="nav-icon-btn"
@@ -115,7 +123,6 @@ function Nav() {
           <span>{t("wishlist")}</span>
         </button>
 
-
         {/* CART */}
         <button
           className="nav-icon-btn"
@@ -124,7 +131,6 @@ function Nav() {
           <ShoppingCart size={20} />
           <span>{t("cart")}</span>
         </button>
-
 
         {/* 3 LINES MENU */}
         <div className="menu-container">
@@ -136,7 +142,6 @@ function Nav() {
             <Menu size={24} />
           </button>
 
-
           {/* DROPDOWN */}
           {menuOpen && (
             <div className="dropdown-menu">
@@ -144,7 +149,6 @@ function Nav() {
               <div className="menu-title">
                 {t("quickMenu")}
               </div>
-
 
               {/* LANGUAGE */}
               <button
@@ -158,7 +162,6 @@ function Nav() {
                 <small>{currentLanguage}</small>
               </button>
 
-
               {/* SCREEN MODE */}
               <button
                 className="menu-option"
@@ -169,7 +172,6 @@ function Nav() {
                 <Moon size={19} />
                 <span>{t("screenMode")}</span>
               </button>
-
 
               {/* ADDRESS */}
               <button
@@ -182,7 +184,6 @@ function Nav() {
                 <span>{t("myAddress")}</span>
               </button>
 
-
               {/* NEED HELP */}
               <button
                 className="menu-option"
@@ -193,7 +194,6 @@ function Nav() {
                 <Headphones size={19} />
                 <span>{t("needHelp")}</span>
               </button>
-
 
               {/* GST DETAILS */}
               <button
@@ -206,7 +206,6 @@ function Nav() {
                 <span>{t("gstDetails")}</span>
               </button>
 
-
               {/* PAYMENTS */}
               <button
                 className="menu-option"
@@ -218,7 +217,6 @@ function Nav() {
                 <span>{t("payments")}</span>
               </button>
 
-
               {/* COUPONS */}
               <button
                 className="menu-option"
@@ -229,7 +227,6 @@ function Nav() {
                 <Ticket size={19} />
                 <span>{t("coupons")}</span>
               </button>
-
 
               {/* VIDEO CALL */}
               <button

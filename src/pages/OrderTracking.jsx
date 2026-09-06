@@ -1,226 +1,86 @@
-import React, { useState } from "react";
-import { useCart } from "../context/CartContext";
+import React, { useEffect, useState } from "react";
 import "../Styles/OrderTracking.css";
 
-function OrderTracking() {
-  const { cartItems = [] } = useCart();
+const steps = [
+  "Order Confirmed",
+  "Processing",
+  "Out for Delivery",
+  "Delivered",
+];
 
-  // 1 = Order Placed
-  // 2 = Processing
-  // 3 = Out for Delivery
-  // 4 = Delivered
-  const [currentStep, setCurrentStep] = useState(1);
+const Orders = () => {
+  const [orders, setOrders] = useState([]);
 
-  const totalItems = cartItems.reduce(
-    (total, item) => total + (item.quantity || 1),
-    0
-  );
+  useEffect(() => {
+    fetch("http://localhost:3000/orders")
+      .then((res) => res.json())
+      .then((data) => setOrders(data))
+      .catch((err) => console.log(err));
+  }, []);
 
-  const totalAmount = cartItems.reduce(
-    (total, item) =>
-      total + Number(item.price || 0) * (item.quantity || 1),
-    0
-  );
-
-  const getStatusText = () => {
-    if (currentStep === 1) return "Order Confirmed";
-    if (currentStep === 2) return "Processing";
-    if (currentStep === 3) return "Out for Delivery";
-    if (currentStep === 4) return "Delivered";
-  };
-
-  if (cartItems.length === 0) {
-    return (
-      <div className="orders-page">
-        <div className="orders-header">
-          <h1>My Orders</h1>
-          <p>Track your grocery orders</p>
-        </div>
-
-        <div className="empty-orders">
-          <h2>No Orders Found</h2>
-          <p>You haven't placed any orders yet.</p>
-        </div>
-      </div>
+  const getCurrentStep = (status) => {
+    const index = steps.findIndex(
+      (step) => step.toLowerCase() === (status || "Order Confirmed").toLowerCase()
     );
-  }
+
+    return index === -1 ? 0 : index;
+  };
 
   return (
     <div className="orders-page">
+      <h1>Order Tracking</h1>
 
-      {/* PAGE HEADER */}
-      <div className="orders-header">
-        <h1>My Orders</h1>
-        <p>Track your grocery orders</p>
-      </div>
+      {orders.length === 0 ? (
+        <p>No orders found.</p>
+      ) : (
+        orders.map((order) => {
+          const currentStep = getCurrentStep(order.status);
 
-      {/* ORDER CARD */}
-      <div className="order-card">
+          return (
+            <div className="tracking-card" key={order.id}>
+              
+              <h2>
+                Current Status: {order.status || "Order Confirmed"}
+              </h2>
 
-        {/* ORDER TOP */}
-        <div className="order-top">
-          <div>
-            <h2>Order #1001</h2>
-            <p>Order placed successfully</p>
-          </div>
+              <div className="tracking-flow">
+                {steps.map((step, index) => (
+                  <React.Fragment key={step}>
+                    
+                    <div className="step-wrapper">
+                      <div
+                        className={`step-circle ${
+                          index <= currentStep ? "active" : ""
+                        }`}
+                      >
+                        {index + 1}
+                      </div>
 
-          <span className="order-status">
-            {getStatusText()}
-          </span>
-        </div>
+                      <p>{step}</p>
+                    </div>
 
-        {/* ORDER ITEMS */}
-        <div className="order-items">
-
-          {cartItems.map((item) => (
-            <div className="order-item" key={item.id}>
-
-              <img
-                src={item.image}
-                alt={item.name}
-                className="order-product-image"
-                onError={(e) => {
-                  e.currentTarget.style.display = "none";
-                }}
-              />
-
-              <div className="order-item-details">
-                <h3>{item.name}</h3>
-
-                <p>
-                  Category: {item.category || "Groceries"}
-                </p>
-
-                <p>
-                  Price: ₹{item.price}
-                </p>
-
-                <p>
-                  Quantity: {item.quantity || 1}
-                </p>
+                    {index < steps.length - 1 && (
+                      <div
+                        className={`step-line ${
+                          index < currentStep ? "active-line" : ""
+                        }`}
+                      ></div>
+                    )}
+                  </React.Fragment>
+                ))}
               </div>
 
-              <div className="order-item-total">
-                ₹{Number(item.price || 0) * (item.quantity || 1)}
-              </div>
-
+              {order.status === "Delivered" && (
+                <h2 className="delivered-message">
+                  🎉 Order Delivered Successfully!
+                </h2>
+              )}
             </div>
-          ))}
-
-        </div>
-
-        {/* ORDER TOTAL */}
-        <div className="order-bottom">
-
-          <div>
-            <p>Total Items</p>
-            <strong>{totalItems}</strong>
-          </div>
-
-          <div className="total-amount-box">
-            <p>Total Amount</p>
-            <strong>₹{totalAmount}</strong>
-          </div>
-
-        </div>
-
-        {/* DELIVERY STATUS */}
-        <div className="delivery-title">
-          Delivery Status
-        </div>
-
-        {/* TRACKING */}
-        <div className="tracking-status">
-
-          {/* STEP 1 */}
-          <div className="track-step active">
-            <span>1</span>
-            <p>Order Placed</p>
-          </div>
-
-          <div
-            className={`track-line ${
-              currentStep >= 2 ? "active-line" : ""
-            }`}
-          ></div>
-
-          {/* STEP 2 */}
-          <div
-            className={`track-step ${
-              currentStep >= 2 ? "active" : ""
-            }`}
-          >
-            <span>2</span>
-            <p>Processing</p>
-          </div>
-
-          <div
-            className={`track-line ${
-              currentStep >= 3 ? "active-line" : ""
-            }`}
-          ></div>
-
-          {/* STEP 3 */}
-          <div
-            className={`track-step ${
-              currentStep >= 3 ? "active" : ""
-            }`}
-          >
-            <span>3</span>
-            <p>Out for Delivery</p>
-          </div>
-
-          <div
-            className={`track-line ${
-              currentStep >= 4 ? "active-line" : ""
-            }`}
-          ></div>
-
-          {/* STEP 4 */}
-          <div
-            className={`track-step ${
-              currentStep >= 4 ? "active" : ""
-            }`}
-          >
-            <span>4</span>
-            <p>Delivered</p>
-          </div>
-
-        </div>
-
-        {/* DEMO BUTTONS */}
-        <div className="tracking-buttons">
-
-          {currentStep < 2 && (
-            <button onClick={() => setCurrentStep(2)}>
-              Start Processing
-            </button>
-          )}
-
-          {currentStep === 2 && (
-            <button onClick={() => setCurrentStep(3)}>
-              Out for Delivery
-            </button>
-          )}
-
-          {currentStep === 3 && (
-            <button onClick={() => setCurrentStep(4)}>
-              Mark as Delivered
-            </button>
-          )}
-
-          {currentStep === 4 && (
-            <div className="delivered-message">
-              🎉 Your order has been delivered successfully!
-            </div>
-          )}
-
-        </div>
-
-      </div>
-
+          );
+        })
+      )}
     </div>
   );
-}
+};
 
-export default OrderTracking;
+export default Orders;

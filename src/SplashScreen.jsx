@@ -8,17 +8,23 @@ function SplashScreen({ onFinish }) {
   const startSplash = async () => {
     if (started) return;
 
-    // Images movement start
-    setStarted(true);
-
     try {
+      // Song start
       if (audioRef.current) {
         audioRef.current.currentTime = 0;
         audioRef.current.volume = 1;
+
         await audioRef.current.play();
       }
+
+      // Button/message disappear
+      setStarted(true);
+
     } catch (error) {
-      console.log("Song Error:", error);
+      console.log("Song error:", error);
+
+      // Error unna button disappear ayi website continue avvali
+      setStarted(true);
     }
   };
 
@@ -34,59 +40,49 @@ function SplashScreen({ onFinish }) {
       onFinish();
     }, 6000);
 
-    return () => {
-      clearTimeout(timer);
-
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
-      }
-    };
+    return () => clearTimeout(timer);
   }, [started, onFinish]);
 
   return (
-    <div className="splash-container">
-
+    <div
+      className="splash-screen"
+      onClick={startSplash}
+    >
       <audio
         ref={audioRef}
         src="/song.mp3"
         preload="auto"
       />
 
-      {/* MAN - COMPLETE LEFT TO RIGHT */}
-      <img
-        src="/men.png"
-        alt="Man"
-        className={`moving-man ${started ? "move-man" : ""}`}
-      />
+      {/* Click button only before song starts */}
+      {!started && (
+        <div className="sound-message">
+          🔊 Click to Start GroceryGo
+        </div>
+      )}
 
-      {/* WOMAN - COMPLETE RIGHT TO LEFT */}
-      <img
-        src="/women.png"
-        alt="Woman"
-        className={`moving-woman ${started ? "move-woman" : ""}`}
-      />
-
-      {/* CENTER CONTENT */}
-      <div className="center-content">
-
+      <div className="splash-title">
         <h1>GroceryGo</h1>
-
         <p>Fresh Vegetables at Your Doorstep</p>
-
-        {!started && (
-          <button
-            className="start-btn"
-            onClick={startSplash}
-          >
-            🔊 Start GroceryGo
-          </button>
-        )}
-
       </div>
 
-      <div className="bottom-green"></div>
+      <div className="speech-man">
+        Kuragayalo... Kuragayalo... 🥬🥕
+      </div>
 
+      <div className="speech-woman">
+        Kuragayalo... Kuragayalo... 🍅🥬
+      </div>
+
+      <div className="vendor-man">
+        <img src="/men.png" alt="Vegetable Seller" />
+      </div>
+
+      <div className="vendor-woman">
+        <img src="/women.png" alt="Vegetable Seller" />
+      </div>
+
+      <div className="village-ground"></div>
     </div>
   );
 }

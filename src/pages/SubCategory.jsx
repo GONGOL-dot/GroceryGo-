@@ -10,7 +10,7 @@ function SubCategory() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // URL nundi category name decode
+  // Decode category name from URL
   const decodedCategory = decodeURIComponent(categoryName || "");
 
   // ================= LOAD PRODUCTS =================
@@ -27,9 +27,7 @@ function SubCategory() {
       .then((data) => {
         const categoryProducts = data.filter(
           (product) =>
-            product.category
-              ?.toLowerCase()
-              .trim() ===
+            product.category?.toLowerCase().trim() ===
             decodedCategory.toLowerCase().trim()
         );
 
@@ -98,19 +96,16 @@ function SubCategory() {
   return (
     <div className="subcategory-page">
 
-      {/* BACK BUTTON */}
-
+      {/* BACK ARROW */}
       <button
-        className="back-btn"
+        className="subcategory-back-arrow"
         onClick={() => navigate(-1)}
+        aria-label="Go back"
       >
-        <span className="back-arrow">←</span>
-        Back
+        ←
       </button>
 
-
       {/* HEADER */}
-
       <div className="subcategory-header">
         <h1>{decodedCategory}</h1>
 
@@ -119,9 +114,7 @@ function SubCategory() {
         </p>
       </div>
 
-
-      {/* LOADING */}
-
+      {/* PRODUCTS */}
       {loading ? (
         <p className="no-items">
           Loading products...
@@ -131,7 +124,6 @@ function SubCategory() {
           No products available in {decodedCategory}
         </p>
       ) : (
-
         <div className="subcategory-grid">
 
           {products.map((product) => (
@@ -142,7 +134,6 @@ function SubCategory() {
             >
 
               {/* PRODUCT IMAGE */}
-
               <div className="subcategory-image-box">
 
                 <img
@@ -151,21 +142,19 @@ function SubCategory() {
                 />
 
                 {/* WISHLIST */}
-
                 <button
                   className="wishlist-heart"
                   onClick={() =>
                     addToWishlist(product)
                   }
+                  aria-label="Add to wishlist"
                 >
                   ♥
                 </button>
 
               </div>
 
-
               {/* PRODUCT INFO */}
-
               <div className="subcategory-info">
 
                 <h3>
@@ -180,9 +169,7 @@ function SubCategory() {
                   ₹{product.price}
                 </h4>
 
-
                 {/* ADD TO CART */}
-
                 <button
                   className="subcategory-cart-btn"
                   onClick={() =>

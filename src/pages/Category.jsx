@@ -94,9 +94,17 @@ function Category() {
 
   return (
     <div className="category-page">
+
+      {/* Back Arrow */}
+      <button
+        className="back-arrow"
+        onClick={() => navigate(-1)}
+      >
+        ←
+      </button>
+
       <div className="category-header">
         <h1>Shop by Category</h1>
-
         <p>Choose your favourite grocery category</p>
       </div>
 
@@ -118,6 +126,7 @@ function Category() {
           </div>
         ))}
       </div>
+
     </div>
   );
 }
