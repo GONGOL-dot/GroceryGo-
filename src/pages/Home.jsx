@@ -48,7 +48,7 @@ function Home() {
 
   useEffect(() => {
 
-    fetch("http://localhost:3000/products")
+    fetch("https://grocerygo-ecom.onrender.com//products")
       .then((response) => {
 
         if (!response.ok) {

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./VoiceAssistant.css";
 
-const API_URL = "http://localhost:3000";
+const API_URL = "https://grocerygo-ecom.onrender.com/";
 
 const VoiceAssistant = () => {
   const [open, setOpen] = useState(false);

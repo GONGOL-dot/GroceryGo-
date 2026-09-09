@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./AdminCategories.css";
+import {API} from "../Api"
 
 const AdminCategories = () => {
   const [categories, setCategories] = useState([]);
@@ -9,7 +10,7 @@ const AdminCategories = () => {
   const getCategories = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/categories"
+        `${API}/categories`
       );
 
       setCategories(response.data);
@@ -27,7 +28,7 @@ const AdminCategories = () => {
 
     try {
       await axios.post(
-        "http://localhost:3000/categories",
+        `${API}/categories`,
         {
           name: categoryName
         }
@@ -43,7 +44,7 @@ const AdminCategories = () => {
 
   const deleteCategory = async (id) => {
     await axios.delete(
-      `http://localhost:3000/categories/${id}`
+      `${API}/categories/${id}`
     );
 
     getCategories();

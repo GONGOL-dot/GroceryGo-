@@ -30,7 +30,7 @@ function Login() {
 
     try {
       const response = await axios.get(
-        "http://localhost:3000/users"
+        "https://grocerygo-ecom.onrender.com//users"
       );
 
       const users = response.data;

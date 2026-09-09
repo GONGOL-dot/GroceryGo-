@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./AdminProducts.css";
 
-const API_URL = "http://localhost:3000/products";
+
+const API_URL = "https://grocerygo-ecom.onrender.com//products";
 
 const AdminProducts = () => {
   const [products, setProducts] = useState([]);

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const API = "http://localhost:5000/api";
+export const API = "https://grocerygo-ecom.onrender.com/";
 
 export const api = axios.create({
   baseURL: API

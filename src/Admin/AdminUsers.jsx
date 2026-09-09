@@ -8,7 +8,7 @@ const AdminUsers = () => {
   const getUsers = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/users"
+        "https://grocerygo-ecom.onrender.com//users"
       );
 
       setUsers(response.data);
@@ -24,7 +24,7 @@ const AdminUsers = () => {
   const deleteUser = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:3000/users/${id}`
+        `https://grocerygo-ecom.onrender.com//users/${id}`
       );
 
       getUsers();

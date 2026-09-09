@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./AdminOrders.css";
+import {API} from "../Api"
 
 const AdminOrders = () => {
   const [orders, setOrders] = useState([]);
@@ -8,7 +9,7 @@ const AdminOrders = () => {
   const getOrders = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/orders"
+        axios.get(` ${API}/orders`)
       );
 
       setOrders(response.data);
@@ -24,7 +25,7 @@ const AdminOrders = () => {
   const updateStatus = async (id, status) => {
     try {
       await axios.patch(
-        `http://localhost:3000/orders/${id}`,
+        `${API}/orders/${id}`,
         { status }
       );
 
