@@ -48,7 +48,7 @@ function Home() {
 
   useEffect(() => {
 
-    fetch("https://grocerygo-ecom.onrender.com//products")
+    fetch("https://grocerygo-ecom.onrender.com/products")
       .then((response) => {
 
         if (!response.ok) {
