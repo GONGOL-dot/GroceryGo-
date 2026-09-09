@@ -51,7 +51,7 @@ function Otp() {
       };
 
       const response = await fetch(
-        "/https://grocerygo-ecom.onrender.com//orders",
+        "/https://grocerygo-ecom.onrender.com/orders",
         {
           method: "POST",
           headers: {
@@ -66,7 +66,7 @@ function Otp() {
       }
 
       await fetch(
-        "https://grocerygo-ecom.onrender.com//payments",
+        "https://grocerygo-ecom.onrender.com/payments",
         {
           method: "POST",
           headers: {
@@ -78,7 +78,7 @@ function Otp() {
             paymentMethod,
             status: "Success",
           }),
-        }
+        },
       );
 
       alert("Payment successful! Order confirmed 🎉");

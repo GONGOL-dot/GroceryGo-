@@ -61,7 +61,7 @@ function Register() {
 
       // REGISTER NEW USER
       const response = await fetch(
-        "https://grocerygo-ecom.onrender.com//users",
+        "https://grocerygo-ecom.onrender.com/users",
         {
           method: "POST",
           headers: {
