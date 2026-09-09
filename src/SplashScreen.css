@@ -1,0 +1,244 @@
+/* =========================================
+   SPLASH SCREEN
+========================================= */
+
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #ffffff;
+  overflow: hidden;
+  z-index: 999999;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.splash-title {
+  position: absolute;
+  top: 35px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 100;
+}
+
+.splash-title h1 {
+  margin: 0;
+  font-size: 52px;
+  font-weight: 800;
+  color: #2e7d32;
+}
+
+.splash-title p {
+  margin: 10px 0 0;
+  font-size: 20px;
+  color: #444;
+}
+
+
+/* =========================================
+   IMAGE AREA
+========================================= */
+
+.splash-images {
+  position: absolute;
+  top: 50%;
+  left: 0;
+
+  width: 100vw;
+  height: 400px;
+
+  transform: translateY(-50%);
+
+  overflow: hidden;
+
+  z-index: 50;
+}
+
+
+/* =========================================
+   IMAGES
+========================================= */
+
+.moving-image {
+  position: absolute;
+
+  top: 20px;
+
+  width: 380px;
+  height: 360px;
+
+  /*
+     IMPORTANT:
+     Full image visible
+     Face will NOT be cropped
+  */
+  object-fit: contain;
+  object-position: center;
+
+  display: block;
+
+  opacity: 1;
+  visibility: visible;
+
+  z-index: 60;
+
+  will-change: left, right;
+}
+
+
+/* =========================================
+   MEN
+   LEFT → RIGHT
+========================================= */
+
+.image-left {
+  left: -400px;
+
+  animation: menMove 6s linear infinite;
+}
+
+
+/* =========================================
+   WOMEN
+   RIGHT → LEFT
+========================================= */
+
+.image-right {
+  right: -400px;
+
+  animation: womenMove 6s linear infinite;
+}
+
+
+/* =========================================
+   MEN LEFT → RIGHT
+========================================= */
+
+@keyframes menMove {
+
+  0% {
+    left: -400px;
+  }
+
+  100% {
+    left: calc(100vw + 400px);
+  }
+
+}
+
+
+/* =========================================
+   WOMEN RIGHT → LEFT
+========================================= */
+
+@keyframes womenMove {
+
+  0% {
+    right: -400px;
+  }
+
+  100% {
+    right: calc(100vw + 400px);
+  }
+
+}
+
+
+/* =========================================
+   BOTTOM TEXT
+========================================= */
+
+.splash-bottom {
+  position: absolute;
+
+  bottom: 35px;
+  left: 0;
+
+  width: 100%;
+
+  text-align: center;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  color: #333;
+
+  z-index: 100;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+  .splash-title h1 {
+    font-size: 36px;
+  }
+
+  .splash-title p {
+    font-size: 15px;
+  }
+
+  .splash-images {
+    height: 300px;
+  }
+
+  .moving-image {
+    width: 280px;
+    height: 270px;
+
+    top: 15px;
+
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .image-left {
+    left: -300px;
+
+    animation: menMoveMobile 6s linear infinite;
+  }
+
+  .image-right {
+    right: -300px;
+
+    animation: womenMoveMobile 6s linear infinite;
+  }
+
+  @keyframes menMoveMobile {
+
+    0% {
+      left: -300px;
+    }
+
+    100% {
+      left: calc(100vw + 300px);
+    }
+
+  }
+
+  @keyframes womenMoveMobile {
+
+    0% {
+      right: -300px;
+    }
+
+    100% {
+      right: calc(100vw + 300px);
+    }
+
+  }
+
+  .splash-bottom {
+    font-size: 15px;
+  }
+}

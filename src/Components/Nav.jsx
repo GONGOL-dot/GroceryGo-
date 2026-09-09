@@ -25,10 +25,7 @@ function Nav() {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
 
-  // Search state
   const [search, setSearch] = useState("");
-
-  // 3 lines menu open / close
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleMenuNavigate = (path) => {
@@ -36,14 +33,13 @@ function Nav() {
     setMenuOpen(false);
   };
 
-  // Search function
   const handleSearch = (e) => {
     if (e.key === "Enter" && search.trim() !== "") {
-      navigate(`/search?query=${encodeURIComponent(search)}`);
+      navigate(`/search?query=${encodeURIComponent(search.trim())}`);
+      setSearch("");
     }
   };
 
-  // Current selected language
   const languageNames = {
     en: "English",
     te: "తెలుగు",
@@ -65,7 +61,6 @@ function Nav() {
           alt="GroceryGo Logo"
           className="logo-img"
         />
-        <span className="logo-text"></span>
       </Link>
 
       {/* SEARCH */}
@@ -132,7 +127,7 @@ function Nav() {
           <span>{t("cart")}</span>
         </button>
 
-        {/* 3 LINES MENU */}
+        {/* MENU */}
         <div className="menu-container">
 
           <button
@@ -142,7 +137,6 @@ function Nav() {
             <Menu size={24} />
           </button>
 
-          {/* DROPDOWN */}
           {menuOpen && (
             <div className="dropdown-menu">
 
@@ -150,7 +144,6 @@ function Nav() {
                 {t("quickMenu")}
               </div>
 
-              {/* LANGUAGE */}
               <button
                 className="menu-option"
                 onClick={() =>
@@ -162,7 +155,6 @@ function Nav() {
                 <small>{currentLanguage}</small>
               </button>
 
-              {/* SCREEN MODE */}
               <button
                 className="menu-option"
                 onClick={() =>
@@ -173,7 +165,6 @@ function Nav() {
                 <span>{t("screenMode")}</span>
               </button>
 
-              {/* ADDRESS */}
               <button
                 className="menu-option"
                 onClick={() =>
@@ -184,7 +175,6 @@ function Nav() {
                 <span>{t("myAddress")}</span>
               </button>
 
-              {/* NEED HELP */}
               <button
                 className="menu-option"
                 onClick={() =>
@@ -195,7 +185,6 @@ function Nav() {
                 <span>{t("needHelp")}</span>
               </button>
 
-              {/* GST DETAILS */}
               <button
                 className="menu-option"
                 onClick={() =>
@@ -206,7 +195,6 @@ function Nav() {
                 <span>{t("gstDetails")}</span>
               </button>
 
-              {/* PAYMENTS */}
               <button
                 className="menu-option"
                 onClick={() =>
@@ -217,18 +205,17 @@ function Nav() {
                 <span>{t("payments")}</span>
               </button>
 
-              {/* COUPONS */}
+              {/* FIXED COUPON ROUTE */}
               <button
                 className="menu-option"
                 onClick={() =>
-                  handleMenuNavigate("/coupons")
+                  handleMenuNavigate("/coupon")
                 }
               >
                 <Ticket size={19} />
                 <span>{t("coupons")}</span>
               </button>
 
-              {/* VIDEO CALL */}
               <button
                 className="menu-option video-menu-option"
                 onClick={() =>

@@ -1,459 +1,604 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./VoiceAssistant.css";
 
+const API_URL = "http://localhost:3000";
+
 const VoiceAssistant = () => {
-  const [products, setProducts] = useState([]);
+  const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [reply, setReply] = useState(
-    "Hey Crazy! Ask me about any product."
+    "Hello! I am your GroceryGo assistant. How can I help you?"
   );
-  const [isOpen, setIsOpen] = useState(false);
-  const [isListening, setIsListening] = useState(false);
+  const [listening, setListening] = useState(false);
+  const [products, setProducts] = useState([]);
 
   const recognitionRef = useRef(null);
 
   // ==============================
-  // GET PRODUCTS FROM DB.JSON
+  // GET PRODUCTS
   // ==============================
-  useEffect(() => {
-    fetch("http://localhost:3000/products")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Products not loaded");
-        }
 
-        return response.json();
-      })
+  useEffect(() => {
+    fetch(`${API_URL}/products`)
+      .then((res) => res.json())
       .then((data) => {
-        setProducts(data);
-        console.log("Products loaded:", data);
+        setProducts(Array.isArray(data) ? data : []);
       })
       .catch((error) => {
-        console.error(error);
-
-        setReply(
-          "Hey Crazy! I could not load the products. Please check the backend."
-        );
+        console.error("Products error:", error);
       });
   }, []);
 
   // ==============================
-  // VOICE SPEAK FUNCTION
+  // VOICE REPLY
   // ==============================
-  const speak = (text, language = "en-IN") => {
-    if (!("speechSynthesis" in window)) {
-      return;
-    }
 
-    // Stop previous voice
+  const speak = (text, language = "en-IN") => {
+    if (!window.speechSynthesis) return;
+
     window.speechSynthesis.cancel();
 
-    const utterance = new SpeechSynthesisUtterance(text);
+    const speech = new SpeechSynthesisUtterance(text);
 
-    utterance.lang = language;
-    utterance.rate = 0.9;
-    utterance.pitch = 1;
-    utterance.volume = 1;
+    speech.lang = language;
+    speech.rate = 0.95;
+    speech.pitch = 1;
+    speech.volume = 1;
 
     const voices = window.speechSynthesis.getVoices();
 
-    // Telugu voice
     if (language === "te-IN") {
-      const teluguVoice = voices.find(
-        (voice) =>
-          voice.lang === "te-IN" ||
-          voice.lang.toLowerCase().startsWith("te")
+      const teluguVoice = voices.find((voice) =>
+        voice.lang?.toLowerCase().startsWith("te")
       );
 
       if (teluguVoice) {
-        utterance.voice = teluguVoice;
+        speech.voice = teluguVoice;
       }
     }
 
-    // English voice
-    if (language === "en-IN") {
-      const englishVoice = voices.find(
-        (voice) =>
-          voice.lang === "en-IN" ||
-          voice.lang.toLowerCase().startsWith("en")
-      );
-
-      if (englishVoice) {
-        utterance.voice = englishVoice;
-      }
-    }
-
-    window.speechSynthesis.speak(utterance);
+    window.speechSynthesis.speak(speech);
   };
 
   // ==============================
-  // PRODUCT ALIASES
+  // FIND PRODUCTS
   // ==============================
-  const productAliases = {
-    apple: ["apple", "apples", "యాపిల్", "యాపిల్స్"],
-    banana: ["banana", "bananas", "అరటి", "అరటిపండు", "అరటిపండ్లు"],
-    tomato: ["tomato", "tomatoes", "టమాటో", "టమాటోలు"],
-    potato: ["potato", "potatoes", "బంగాళదుంప", "బంగాళదుంపలు"],
-    onion: ["onion", "onions", "ఉల్లిపాయ", "ఉల్లిపాయలు"],
-    carrot: ["carrot", "carrots", "క్యారెట్", "క్యారెట్లు"],
-    milk: ["milk", "పాలు"],
-    cheese: ["cheese", "చీజ్"],
-    butter: ["butter", "బటర్", "వెన్న"],
-    bread: ["bread", "బ్రెడ్"],
-    cake: ["cake", "కేక్"],
-    cookies: ["cookie", "cookies", "కుకీ", "కుకీస్"],
-    rice: ["rice", "బియ్యం"],
-    wheat: ["wheat", "గోధుమ", "గోధుమలు"],
-    dal: ["dal", "toor dal", "పప్పు", "తూర్ దాల్"]
-  };
 
-  // ==============================
-  // FIND PRODUCT
-  // ==============================
-  const findProduct = (question) => {
-    const text = question.toLowerCase().trim();
+  const findProducts = (text) => {
+    const value = String(text).toLowerCase().trim();
 
-    // Direct exact product matching
-    const directProduct = products.find((product) => {
-      const name = product.name.toLowerCase();
+    if (!value) return [];
 
-      return text.includes(name);
-    });
+    return products.filter((product) => {
+      const name = String(product.name || "").toLowerCase();
 
-    if (directProduct) {
-      return directProduct;
-    }
+      const cleanName = name.replace(/^fresh\s+/i, "");
 
-    // Match aliases
-    for (const [key, aliases] of Object.entries(productAliases)) {
-      const foundAlias = aliases.some((alias) =>
-        text.includes(alias.toLowerCase())
-      );
+      const singularName =
+        cleanName.endsWith("s") && !cleanName.endsWith("ss")
+          ? cleanName.slice(0, -1)
+          : cleanName;
 
-      if (foundAlias) {
-        const matchedProduct = products.find((product) =>
-          product.name.toLowerCase().includes(key)
-        );
-
-        if (matchedProduct) {
-          return matchedProduct;
-        }
-      }
-    }
-
-    // Match words
-    const words = text.split(/\s+/);
-
-    const matchedProduct = products.find((product) => {
-      const productWords = product.name
-        .toLowerCase()
-        .replace("fresh", "")
-        .trim()
-        .split(/\s+/);
-
-      return productWords.some(
-        (word) =>
-          word.length > 2 &&
-          words.some((questionWord) =>
-            questionWord.includes(word)
-          )
+      return (
+        value.includes(name) ||
+        value.includes(cleanName) ||
+        value.includes(singularName)
       );
     });
-
-    return matchedProduct || null;
   };
 
   // ==============================
-  // DETECT TELUGU
+  // ADD TO CART
   // ==============================
-  const isTeluguText = (text) => {
-    return /[\u0C00-\u0C7F]/.test(text);
+
+  const addProductToCart = async (product) => {
+    try {
+      const response = await fetch(`${API_URL}/cart`);
+      const cart = await response.json();
+
+      const existing = cart.find(
+        (item) =>
+          String(item.productId || item.id) === String(product.id)
+      );
+
+      if (existing) {
+        await fetch(`${API_URL}/cart/${existing.id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            quantity: (existing.quantity || 1) + 1,
+          }),
+        });
+      } else {
+        await fetch(`${API_URL}/cart`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...product,
+            productId: product.id,
+            quantity: 1,
+          }),
+        });
+      }
+
+      window.dispatchEvent(new Event("cartUpdated"));
+
+      return true;
+    } catch (error) {
+      console.error("Cart error:", error);
+      return false;
+    }
   };
 
   // ==============================
-  // HANDLE QUESTION
+  // PROCESS COMMAND
   // ==============================
-  const handleQuestion = (
-    question,
-    shouldSpeak = false,
-    selectedLanguage = "en-IN"
-  ) => {
-    if (!question || !question.trim()) {
+
+  const processCommand = async (command, fromVoice = false) => {
+    const text = String(command || "").trim();
+
+    if (!text) return;
+
+    const lower = text.toLowerCase();
+
+    // Telugu detection
+    const isTelugu =
+      /[\u0C00-\u0C7F]/.test(text) ||
+      lower.includes("undha") ||
+      lower.includes("undi") ||
+      lower.includes("unnaya") ||
+      lower.includes("entha") ||
+      lower.includes("kavali") ||
+      lower.includes("ivvu") ||
+      lower.includes("cheppu") ||
+      lower.includes("ledu") ||
+      lower.includes("levu");
+
+    const language = isTelugu ? "te-IN" : "en-IN";
+
+    // ==============================
+    // GREETING
+    // ==============================
+
+    const greetings = [
+      "hello",
+      "hi",
+      "hey",
+      "crazy",
+      "hey siri",
+    ];
+
+    const isGreeting = greetings.some((word) => {
+      return (
+        lower === word ||
+        lower.startsWith(word + " ") ||
+        lower.endsWith(" " + word)
+      );
+    });
+
+    if (isGreeting) {
+      const response = isTelugu
+        ? "Hello! Nenu GroceryGo assistant ni. Meeku em kavali?"
+        : "Hello! I am your GroceryGo assistant. How can I help you?";
+
+      setReply(response);
+
+      if (fromVoice) {
+        speak(response, language);
+      }
+
       return;
     }
 
-    console.log("Question:", question);
-    console.log("Products:", products);
+    // ==============================
+    // CURRENT COMMAND PRODUCTS
+    // ==============================
 
-    const product = findProduct(question);
+    const matchedProducts = findProducts(text);
 
-    const isTelugu =
-      selectedLanguage === "te-IN" ||
-      isTeluguText(question);
+    // ==============================
+    // ADD TO CART
+    // ==============================
 
-    let answer = "";
+    if (
+      lower.includes("add") &&
+      (lower.includes("cart") ||
+        lower.includes("basket") ||
+        lower.includes("lo add") ||
+        lower.includes("ki add"))
+    ) {
+      if (matchedProducts.length === 0) {
+        const response = isTelugu
+          ? "Sorry, aa item mana GroceryGo store lo available ga ledu."
+          : "Sorry, that item is not available in our GroceryGo store.";
 
-    // ==========================
-    // PRODUCT EXISTS
-    // ==========================
-    if (product) {
-      if (isTelugu) {
-        answer =
-          `హే క్రేజీ! అవును, ${product.name} మన Grocery Go లో ఉంది. ` +
-          `దీని ధర ${product.price} రూపాయలు.`;
-      } else {
-        answer =
-          `Hey Crazy! Yes, ${product.name} is available in our Grocery Go store. ` +
-          `The price is ${product.price} rupees.`;
+        setReply(response);
+
+        if (fromVoice) {
+          speak(response, language);
+        }
+
+        return;
       }
-    }
 
-    // ==========================
-    // PRODUCT DOES NOT EXIST
-    // ==========================
-    else {
-      if (isTelugu) {
-        answer =
-          "హే క్రేజీ! సారీ, మీరు అడిగిన ఐటమ్ మన Grocery Go స్టోర్‌లో లేదు.";
-      } else {
-        answer =
-          "Hey Crazy! Sorry, that item is not available in our Grocery Go store.";
+      const added = [];
+
+      for (const product of matchedProducts) {
+        const success = await addProductToCart(product);
+
+        if (success) {
+          added.push(product);
+        }
       }
+
+      let response = "";
+
+      if (added.length === 1) {
+        response = isTelugu
+          ? `${added[0].name} cart lo add chesanu.`
+          : `${added[0].name} has been added to your cart.`;
+      } else if (added.length > 1) {
+        const names = added
+          .map((product) => product.name)
+          .join(", ");
+
+        response = isTelugu
+          ? `${names} cart lo add chesanu.`
+          : `${names} have been added to your cart.`;
+      } else {
+        response = isTelugu
+          ? "Sorry, cart lo add cheyalekapoyanu."
+          : "Sorry, I could not add the item to your cart.";
+      }
+
+      setReply(response);
+
+      if (fromVoice) {
+        speak(response, language);
+      }
+
+      return;
     }
 
-    // Show text reply
-    setReply(answer);
+    // ==============================
+    // PRICE
+    // ==============================
 
-    // Speak only for voice question
-    if (shouldSpeak) {
-      speak(answer, isTelugu ? "te-IN" : "en-IN");
+    if (
+      lower.includes("price") ||
+      lower.includes("cost") ||
+      lower.includes("rate") ||
+      lower.includes("entha")
+    ) {
+      if (matchedProducts.length === 0) {
+        const response = isTelugu
+          ? "Sorry, aa product mana GroceryGo store lo available ga ledu."
+          : "Sorry, that product is not available in our GroceryGo store.";
+
+        setReply(response);
+
+        if (fromVoice) {
+          speak(response, language);
+        }
+
+        return;
+      }
+
+      const response = matchedProducts
+        .map((product) =>
+          isTelugu
+            ? `${product.name} price ₹${product.price}.`
+            : `${product.name} costs ₹${product.price}.`
+        )
+        .join(" ");
+
+      setReply(response);
+
+      if (fromVoice) {
+        speak(response, language);
+      }
+
+      return;
     }
 
-    setInput("");
+    // ==============================
+    // PRODUCT AVAILABLE
+    // ==============================
+
+    if (matchedProducts.length > 0) {
+      let response = "";
+
+      if (matchedProducts.length === 1) {
+        const product = matchedProducts[0];
+
+        response = isTelugu
+          ? `Avunu, ${product.name} available ga undi. Price ₹${product.price}.`
+          : `Yes, ${product.name} is available. The price is ₹${product.price}.`;
+      } else {
+        const names = matchedProducts
+          .map(
+            (product) =>
+              `${product.name} ₹${product.price}`
+          )
+          .join(", ");
+
+        response = isTelugu
+          ? `Avunu, ee products available ga unnayi: ${names}.`
+          : `Yes, these products are available: ${names}.`;
+      }
+
+      setReply(response);
+
+      if (fromVoice) {
+        speak(response, language);
+      }
+
+      return;
+    }
+
+    // ==============================
+    // NOT AVAILABLE
+    // ==============================
+
+    const response = isTelugu
+      ? "Sorry, aa item mana GroceryGo store lo available ga ledu."
+      : "Sorry, that item is not available in our GroceryGo store.";
+
+    setReply(response);
+
+    if (fromVoice) {
+      speak(response, language);
+    }
   };
 
   // ==============================
   // TEXT SEND
   // ==============================
-  const handleSend = (event) => {
-    event.preventDefault();
 
-    // Text = only text reply
-    handleQuestion(input, false);
+  const sendMessage = () => {
+    const currentText = input.trim();
+
+    if (!currentText) return;
+
+    // IMPORTANT: clear old text
+    setInput("");
+
+    // Process only current command
+    processCommand(currentText, false);
   };
 
   // ==============================
-  // START VOICE RECOGNITION
+  // VOICE
   // ==============================
-  const startListening = (language) => {
+
+  const startListening = () => {
     const SpeechRecognition =
       window.SpeechRecognition ||
       window.webkitSpeechRecognition;
 
     if (!SpeechRecognition) {
-      const answer =
-        language === "te-IN"
-          ? "హే క్రేజీ! మీ బ్రౌజర్‌లో voice recognition support లేదు."
-          : "Hey Crazy! Voice recognition is not supported in your browser.";
+      const response =
+        "Sorry, voice recognition is not supported in this browser.";
 
-      setReply(answer);
-
-      speak(answer, language);
+      setReply(response);
+      speak(response);
 
       return;
     }
 
-    // Stop old recognition
-    if (recognitionRef.current) {
-      try {
-        recognitionRef.current.abort();
-      } catch (error) {}
+    if (listening) {
+      recognitionRef.current?.stop();
+      return;
     }
 
-    // Stop old voice
-    window.speechSynthesis.cancel();
+    // Clear previous transcript
+    setInput("");
 
     const recognition = new SpeechRecognition();
 
-    recognition.lang = language;
+    recognition.lang = "en-IN";
     recognition.continuous = false;
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;
 
     recognitionRef.current = recognition;
 
-    recognition.onstart = () => {
-      setIsListening(true);
+    // ==============================
+    // START
+    // ==============================
 
-      if (language === "te-IN") {
-        setReply("🎤 హే క్రేజీ! నేను వింటున్నాను...");
-      } else {
-        setReply("🎤 Hey Crazy! I am listening...");
-      }
+    recognition.onstart = () => {
+      setListening(true);
+
+      // VERY IMPORTANT
+      setInput("");
     };
+
+    // ==============================
+    // NEW VOICE RESULT
+    // ==============================
 
     recognition.onresult = (event) => {
-      const spokenText =
+      const transcript =
         event.results[0][0].transcript.trim();
 
-      console.log("Voice heard:", spokenText);
+      console.log("New command:", transcript);
 
-      // Show what user spoke
-      setInput(spokenText);
+      // Never append previous command
+      setInput("");
 
-      // Answer + voice reply
-      handleQuestion(
-        spokenText,
-        true,
-        language
-      );
+      // Process ONLY this command
+      processCommand(transcript, true);
     };
+
+    // ==============================
+    // ERROR
+    // ==============================
 
     recognition.onerror = (event) => {
-      console.log("Voice Error:", event.error);
+      console.log("Voice error:", event.error);
 
-      setIsListening(false);
+      setListening(false);
 
-      let answer = "";
+      if (event.error === "no-speech") {
+        const response =
+          "Sorry, I could not hear you. Please try again.";
 
-      if (event.error === "not-allowed") {
-        answer =
-          language === "te-IN"
-            ? "హే క్రేజీ! Microphone permission allow చేయండి."
-            : "Hey Crazy! Please allow microphone permission.";
-      } else {
-        answer =
-          language === "te-IN"
-            ? "హే క్రేజీ! నేను సరిగ్గా వినలేకపోయాను. మళ్ళీ చెప్పండి."
-            : "Hey Crazy! I could not hear you clearly. Please try again.";
+        setReply(response);
+        speak(response);
+
+        return;
       }
 
-      setReply(answer);
-      speak(answer, language);
+      if (event.error === "not-allowed") {
+        const response =
+          "Please allow microphone permission to use voice assistant.";
+
+        setReply(response);
+        speak(response);
+
+        return;
+      }
+
+      const response =
+        "Sorry, I could not hear you clearly. Please try again.";
+
+      setReply(response);
+      speak(response);
     };
 
+    // ==============================
+    // END
+    // ==============================
+
     recognition.onend = () => {
-      setIsListening(false);
+      setListening(false);
     };
 
     try {
       recognition.start();
     } catch (error) {
-      console.log(error);
-      setIsListening(false);
+      console.log("Recognition start error:", error);
+      setListening(false);
     }
   };
 
-  return (
-    <>
-      {/* FLOATING CORNER BUTTON */}
+  // ==============================
+  // CLEANUP
+  // ==============================
 
-      {!isOpen && (
+  useEffect(() => {
+    return () => {
+      recognitionRef.current?.stop();
+
+      if (window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, []);
+
+  // ==============================
+  // UI
+  // ==============================
+
+  return (
+    <div className="voice-assistant">
+
+      {!open && (
         <button
-          className="voice-floating-button"
-          onClick={() => setIsOpen(true)}
-          type="button"
+          className="assistant-floating-button"
+          onClick={() => setOpen(true)}
+          title="GroceryGo Assistant"
         >
-          🤖
+          🎤
         </button>
       )}
 
-      {/* ASSISTANT POPUP */}
+      {open && (
+        <div className="assistant-box">
 
-      {isOpen && (
-        <div className="voice-assistant">
-          <button
-            className="close-button"
-            type="button"
-            onClick={() => {
-              setIsOpen(false);
-              window.speechSynthesis.cancel();
-            }}
-          >
-            ×
-          </button>
+          {/* HEADER */}
 
-          <div className="assistant-header">
-            <h2>🤖 Grocery Go Assistant</h2>
+          <div className="assistant-top">
+            <div>
+              <h3>🛒 GroceryGo</h3>
+              <span>Assistant</span>
+            </div>
 
-            <p>
-              Ask in English or Telugu
-            </p>
+            <button
+              className="close-assistant"
+              onClick={() => {
+                setOpen(false);
+
+                recognitionRef.current?.stop();
+
+                if (window.speechSynthesis) {
+                  window.speechSynthesis.cancel();
+                }
+
+                setListening(false);
+                setInput("");
+              }}
+            >
+              ×
+            </button>
           </div>
 
-          {/* AI REPLY */}
+          {/* REPLY */}
 
           <div className="assistant-reply">
-            {reply}
+            🤖 {reply}
           </div>
 
           {/* INPUT */}
 
-          <form
-            className="assistant-input-area"
-            onSubmit={handleSend}
-          >
+          <div className="assistant-input">
+
             <input
               type="text"
+              placeholder="Ask about a product..."
               value={input}
-              placeholder="Ask about products..."
-              onChange={(event) =>
-                setInput(event.target.value)
-              }
+              onChange={(e) => {
+                setInput(e.target.value);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  sendMessage();
+                }
+              }}
             />
 
-            {/* ENGLISH VOICE */}
-
             <button
-              type="button"
-              className={
-                isListening
-                  ? "mic-button listening"
-                  : "mic-button"
-              }
-              onClick={() =>
-                startListening("en-IN")
-              }
+              className={`assistant-mic ${
+                listening ? "active" : ""
+              }`}
+              onClick={startListening}
             >
-              🎤 EN
-            </button>
-
-            {/* TELUGU VOICE */}
-
-            <button
-              type="button"
-              className={
-                isListening
-                  ? "mic-button listening"
-                  : "mic-button"
-              }
-              onClick={() =>
-                startListening("te-IN")
-              }
-            >
-              🎤 తెలుగు
+              {listening ? "⏹️" : "🎤"}
             </button>
 
             <button
-              type="submit"
-              className="send-button"
+              className="assistant-send"
+              onClick={sendMessage}
             >
-              Send
+              ➤
             </button>
-          </form>
 
-          <div className="examples">
-            <p>
-              🎤 EN: Do you have milk?
-            </p>
-
-            <p>
-              🎤 తెలుగు: పాలు ఉందా?
-            </p>
           </div>
+
+          {listening && (
+            <div className="listening-text">
+              🎙️ Listening...
+            </div>
+          )}
+
         </div>
       )}
-    </>
+    </div>
   );
 };
 

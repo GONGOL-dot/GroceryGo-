@@ -1,0 +1,610 @@
+/* =====================================================
+   QUICK PAGES - COMMON CSS
+   Language / Screen Mode / Need Help / Payments / Coupons
+===================================================== */
+
+.quick-page {
+  min-height: 100vh;
+  padding: 30px 20px 60px;
+  background: #f5f8f4;
+  box-sizing: border-box;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.quick-header {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 25px;
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  background: #ffffff;
+  padding: 18px 22px;
+
+  border-radius: 15px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+
+  box-sizing: border-box;
+}
+
+.quick-header h1 {
+  margin: 0;
+  font-size: 30px;
+  color: #176b2c;
+}
+
+
+/* =====================================================
+   BACK BUTTON
+===================================================== */
+
+.quick-back {
+  width: 45px;
+  height: 45px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #176b2c;
+  color: white;
+
+  font-size: 25px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.25s ease;
+}
+
+.quick-back:hover {
+  background: #0f5420;
+  transform: translateX(-3px);
+}
+
+
+/* =====================================================
+   MAIN CARD
+===================================================== */
+
+.quick-card {
+  width: 100%;
+  max-width: 900px;
+
+  margin: 0 auto;
+
+  background: #ffffff;
+
+  padding: 35px;
+
+  border-radius: 20px;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.09);
+
+  box-sizing: border-box;
+}
+
+.quick-card h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+
+  color: #176b2c;
+
+  font-size: 25px;
+}
+
+.quick-card p {
+  color: #666;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+
+/* =====================================================
+   LIST
+===================================================== */
+
+.quick-list {
+  margin-top: 25px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+
+/* =====================================================
+   LIST ITEM
+===================================================== */
+
+.quick-item {
+  width: 100%;
+
+  padding: 17px 20px;
+
+  background: #f8fbf7;
+
+  border: 1px solid #dcebdc;
+
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+
+  color: #222;
+
+  font-size: 17px;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.quick-item:hover {
+  background: #e9f7e9;
+
+  border-color: #55a95c;
+
+  transform: translateX(5px);
+}
+
+.quick-item span:last-child {
+  color: #176b2c;
+  font-weight: bold;
+  font-size: 21px;
+}
+
+
+/* =====================================================
+   SUCCESS MESSAGE
+===================================================== */
+
+.quick-success {
+  margin-top: 22px;
+
+  padding: 14px 18px;
+
+  background: #e9f8ec;
+
+  border-left: 5px solid #2e8b3c;
+
+  border-radius: 8px;
+
+  color: #176b2c !important;
+
+  font-weight: 600;
+}
+
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+.quick-input {
+  width: 100%;
+
+  padding: 15px 17px;
+
+  margin-top: 18px;
+  margin-bottom: 15px;
+
+  border: 1px solid #cfdacf;
+
+  border-radius: 10px;
+
+  outline: none;
+
+  font-size: 16px;
+
+  box-sizing: border-box;
+
+  font-family: inherit;
+
+  transition: 0.25s ease;
+}
+
+.quick-input:focus {
+  border-color: #2e8b3c;
+
+  box-shadow: 0 0 0 3px rgba(46, 139, 60, 0.12);
+}
+
+
+/* =====================================================
+   TEXTAREA
+===================================================== */
+
+.quick-textarea {
+  width: 100%;
+
+  min-height: 150px;
+
+  margin-top: 15px;
+  margin-bottom: 18px;
+
+  padding: 15px;
+
+  border: 1px solid #cfdacf;
+
+  border-radius: 10px;
+
+  outline: none;
+
+  resize: vertical;
+
+  font-size: 16px;
+
+  font-family: inherit;
+
+  box-sizing: border-box;
+
+  transition: 0.25s ease;
+}
+
+.quick-textarea:focus {
+  border-color: #2e8b3c;
+
+  box-shadow: 0 0 0 3px rgba(46, 139, 60, 0.12);
+}
+
+
+/* =====================================================
+   COMMON BUTTON
+===================================================== */
+
+.quick-btn {
+  border: none;
+
+  background: #176b2c;
+
+  color: white;
+
+  padding: 13px 24px;
+
+  border-radius: 9px;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.quick-btn:hover {
+  background: #0f5420;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 5px 12px rgba(23, 107, 44, 0.2);
+}
+
+
+/* =====================================================
+   HELP BACK BUTTON
+===================================================== */
+
+.help-back-btn {
+  border: none;
+
+  background: transparent;
+
+  color: #176b2c;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  padding: 5px 0;
+
+  margin-bottom: 20px;
+}
+
+.help-back-btn:hover {
+  text-decoration: underline;
+}
+
+
+/* =====================================================
+   SUPPORT SUCCESS
+===================================================== */
+
+.support-success {
+  margin-top: 25px;
+
+  padding: 25px;
+
+  background: #eef9ef;
+
+  border-radius: 12px;
+
+  border: 1px solid #cde6d0;
+}
+
+.support-success h3 {
+  margin-top: 0;
+
+  color: #176b2c;
+
+  font-size: 21px;
+}
+
+
+/* =====================================================
+   THEME OPTIONS
+===================================================== */
+
+.theme-options {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 18px;
+
+  margin-top: 25px;
+}
+
+.theme-option {
+  padding: 25px 20px;
+
+  border: 2px solid #dcebdc;
+
+  background: #f8fbf7;
+
+  border-radius: 15px;
+
+  cursor: pointer;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  font-size: 17px;
+
+  font-weight: 600;
+
+  color: #333;
+
+  transition: all 0.25s ease;
+}
+
+.theme-option:hover {
+  border-color: #55a95c;
+
+  background: #eef8ef;
+
+  transform: translateY(-3px);
+}
+
+.theme-option.active-theme {
+  border-color: #176b2c;
+
+  background: #e7f5e9;
+
+  color: #176b2c;
+
+  box-shadow: 0 5px 15px rgba(23, 107, 44, 0.12);
+}
+
+.theme-icon {
+  font-size: 35px;
+}
+
+
+/* =====================================================
+   DARK MODE
+===================================================== */
+
+body.dark-theme {
+  background: #121712;
+
+  color: #eeeeee;
+}
+
+body.dark-theme .quick-page {
+  background: #121712;
+}
+
+body.dark-theme .quick-header,
+body.dark-theme .quick-card {
+  background: #1c241d;
+
+  color: #eeeeee;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+body.dark-theme .quick-header h1,
+body.dark-theme .quick-card h2 {
+  color: #7bd687;
+}
+
+body.dark-theme .quick-card p {
+  color: #c5c5c5;
+}
+
+body.dark-theme .quick-item {
+  background: #222c23;
+
+  border-color: #354337;
+
+  color: #eeeeee;
+}
+
+body.dark-theme .quick-item:hover {
+  background: #29372b;
+
+  border-color: #65bd6e;
+}
+
+body.dark-theme .quick-item span:last-child {
+  color: #7bd687;
+}
+
+body.dark-theme .quick-input,
+body.dark-theme .quick-textarea {
+  background: #222c23;
+
+  color: #ffffff;
+
+  border-color: #3d4d3f;
+}
+
+body.dark-theme .quick-input::placeholder,
+body.dark-theme .quick-textarea::placeholder {
+  color: #aaa;
+}
+
+body.dark-theme .theme-option {
+  background: #222c23;
+
+  color: #eeeeee;
+
+  border-color: #354337;
+}
+
+body.dark-theme .theme-option.active-theme {
+  background: #263c29;
+
+  border-color: #65bd6e;
+
+  color: #7bd687;
+}
+
+body.dark-theme .quick-success {
+  background: #203724;
+
+  color: #8be095 !important;
+
+  border-left-color: #65bd6e;
+}
+
+body.dark-theme .support-success {
+  background: #203724;
+
+  border-color: #354f39;
+}
+
+body.dark-theme .support-success h3 {
+  color: #7bd687;
+}
+
+body.dark-theme .help-back-btn {
+  color: #7bd687;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+
+  .quick-page {
+    padding: 20px 12px 40px;
+  }
+
+  .quick-header {
+    padding: 15px 16px;
+
+    margin-bottom: 18px;
+  }
+
+  .quick-header h1 {
+    font-size: 24px;
+  }
+
+  .quick-back {
+    width: 40px;
+    height: 40px;
+
+    font-size: 22px;
+  }
+
+  .quick-card {
+    padding: 22px 18px;
+
+    border-radius: 15px;
+  }
+
+  .quick-card h2 {
+    font-size: 22px;
+  }
+
+  .quick-item {
+    padding: 15px;
+
+    font-size: 15px;
+  }
+
+  .theme-options {
+    grid-template-columns: 1fr;
+  }
+
+  .theme-option {
+    padding: 20px;
+  }
+
+  .quick-btn {
+    width: 100%;
+  }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 480px) {
+
+  .quick-header {
+    gap: 12px;
+  }
+
+  .quick-header h1 {
+    font-size: 21px;
+  }
+
+  .quick-card {
+    padding: 18px 14px;
+  }
+
+  .quick-card h2 {
+    font-size: 20px;
+  }
+
+  .quick-card p {
+    font-size: 14px;
+  }
+
+  .quick-item {
+    padding: 13px;
+
+    font-size: 14px;
+  }
+
+  .theme-icon {
+    font-size: 30px;
+  }
+}

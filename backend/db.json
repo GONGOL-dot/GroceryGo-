@@ -120,6 +120,16 @@
       "email": "user@gmail.com",
       "password": "123456",
       "role": "user"
+    },
+    {
+      "name": "Manasa",
+      "email": "manasagongolla@gmail.com",
+      "gender": "Female",
+      "address": "zaheerabad",
+      "phone": "9966605012",
+      "password": "Manasa1243",
+      "country": "India",
+      "id": "54TpLRehvZU"
     }
   ],
   "cart": [],
@@ -196,6 +206,42 @@
       "status": "Order Confirmed",
       "createdAt": "6/9/2026, 8:55:49 pm",
       "id": "IytDVw2yWiY"
+    },
+    {
+      "orderId": "ORD1788850715214",
+      "items": [
+        {
+          "id": "1",
+          "name": "Fresh Apples",
+          "category": "Fruits",
+          "price": 120,
+          "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6",
+          "quantity": 2
+        }
+      ],
+      "totalAmount": 240,
+      "paymentMethod": "Cash on Delivery",
+      "status": "Order Confirmed",
+      "createdAt": "8/9/2026, 12:28:35 pm",
+      "id": "y7NlZRGMX1o"
+    },
+    {
+      "orderId": "ORD1788973754685",
+      "items": [
+        {
+          "id": "2",
+          "name": "Fresh Bananas",
+          "category": "Fruits",
+          "price": 50,
+          "image": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e",
+          "quantity": 2
+        }
+      ],
+      "totalAmount": 100,
+      "paymentMethod": "Card",
+      "status": "Order Confirmed",
+      "createdAt": "9/9/2026, 10:39:14 pm",
+      "id": "U7G1bNQt0s0"
     }
   ],
   "payments": [
@@ -226,6 +272,20 @@
       "paymentMethod": "Cash on Delivery",
       "status": "Success",
       "id": "sbAuUXveM8k"
+    },
+    {
+      "orderId": "ORD1788850715214",
+      "amount": 240,
+      "paymentMethod": "Cash on Delivery",
+      "status": "Success",
+      "id": "7TIw8U1fWKw"
+    },
+    {
+      "orderId": "ORD1788973754685",
+      "amount": 100,
+      "paymentMethod": "Card",
+      "status": "Success",
+      "id": "-gW5Ync-YZc"
     }
   ],
   "otps": [],

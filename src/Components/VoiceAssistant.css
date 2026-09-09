@@ -1,130 +1,133 @@
-/* FLOATING AI BUTTON */
-
-.voice-floating-button {
+.voice-assistant {
   position: fixed;
   right: 25px;
   bottom: 25px;
+  z-index: 999999;
+  font-family: Arial, sans-serif;
+}
 
+/* ===============================
+   FLOATING BUTTON
+================================ */
+
+.assistant-floating-button {
   width: 65px;
   height: 65px;
 
   border: none;
   border-radius: 50%;
 
-  background: #167a55;
+  background: #176b2c;
   color: white;
 
   font-size: 28px;
 
   cursor: pointer;
 
-  z-index: 99999;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
 
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-
-  transition: 0.3s;
+  transition: 0.25s ease;
 }
 
-.voice-floating-button:hover {
+.assistant-floating-button:hover {
   transform: scale(1.08);
 }
 
 
-/* MAIN ASSISTANT */
+/* ===============================
+   ASSISTANT BOX
+================================ */
 
-.voice-assistant {
-  position: fixed;
-
-  right: 25px;
-  bottom: 25px;
-
-  width: 600px;
-
+.assistant-box {
+  width: 390px;
   max-width: calc(100vw - 30px);
 
   background: white;
 
-  padding: 25px;
+  border-radius: 20px;
 
-  border-radius: 25px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
 
-  z-index: 99999;
-
-  box-shadow:
-    0 15px 50px
-    rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }
 
 
-/* CLOSE BUTTON */
+/* ===============================
+   TOP
+================================ */
 
-.close-button {
-  position: absolute;
+.assistant-top {
+  background: #176b2c;
 
-  top: 10px;
-  right: 18px;
+  color: white;
+
+  padding: 17px 18px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.assistant-top h3 {
+  margin: 0;
+
+  font-size: 19px;
+}
+
+.assistant-top span {
+  font-size: 12px;
+
+  opacity: 0.85;
+}
+
+.close-assistant {
+  width: 35px;
+  height: 35px;
 
   border: none;
 
-  background: transparent;
+  border-radius: 50%;
 
-  font-size: 30px;
+  background: rgba(255, 255, 255, 0.18);
+
+  color: white;
+
+  font-size: 25px;
 
   cursor: pointer;
 }
 
 
-/* HEADER */
-
-.assistant-header {
-  text-align: left;
-
-  margin-bottom: 20px;
-}
-
-.assistant-header h2 {
-  margin: 0;
-
-  font-size: 26px;
-
-  color: #222;
-}
-
-.assistant-header p {
-  margin-top: 7px;
-
-  color: #777;
-}
-
-
-/* REPLY BOX */
+/* ===============================
+   REPLY
+================================ */
 
 .assistant-reply {
-  min-height: 70px;
+  min-height: 90px;
 
-  padding: 18px;
+  padding: 20px;
 
-  background: #f2f7f4;
+  background: #f5f8f4;
 
-  border-radius: 15px;
+  color: #222;
 
-  margin-bottom: 18px;
-
-  display: flex;
-
-  align-items: center;
-
-  font-size: 17px;
+  font-size: 16px;
 
   line-height: 1.5;
 
-  color: #222;
+  box-sizing: border-box;
 }
 
 
-/* INPUT */
+/* ===============================
+   INPUT
+================================ */
 
-.assistant-input-area {
+.assistant-input {
+  padding: 15px;
+
   display: flex;
 
   gap: 8px;
@@ -132,57 +135,59 @@
   align-items: center;
 }
 
-.assistant-input-area input {
+.assistant-input input {
   flex: 1;
 
-  min-width: 120px;
+  min-width: 0;
 
-  height: 52px;
+  height: 45px;
 
-  padding: 0 15px;
+  border: 1px solid #d0d8d0;
 
-  border: 1px solid #ccc;
+  border-radius: 10px;
 
-  border-radius: 12px;
-
-  font-size: 16px;
+  padding: 0 13px;
 
   outline: none;
-}
-
-
-/* MICROPHONE */
-
-.mic-button {
-  height: 52px;
-
-  padding: 0 12px;
-
-  border: none;
-
-  border-radius: 12px;
-
-  background: #167a55;
-
-  color: white;
 
   font-size: 14px;
 
+  box-sizing: border-box;
+}
+
+.assistant-input input:focus {
+  border-color: #176b2c;
+}
+
+
+/* ===============================
+   MIC
+================================ */
+
+.assistant-mic {
+  width: 45px;
+  height: 45px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #176b2c;
+
+  color: white;
+
+  font-size: 20px;
+
   cursor: pointer;
-
-  white-space: nowrap;
 }
 
+.assistant-mic.active {
+  background: #d62828;
 
-/* LISTENING ANIMATION */
-
-.mic-button.listening {
-  background: #e53935;
-
-  animation: pulse 1s infinite;
+  animation: micPulse 1s infinite;
 }
 
-@keyframes pulse {
+@keyframes micPulse {
   0% {
     transform: scale(1);
   }
@@ -197,69 +202,62 @@
 }
 
 
-/* SEND BUTTON */
+/* ===============================
+   SEND
+================================ */
 
-.send-button {
-  height: 52px;
-
-  padding: 0 16px;
+.assistant-send {
+  width: 45px;
+  height: 45px;
 
   border: none;
 
-  border-radius: 12px;
+  border-radius: 10px;
 
-  background: #222;
+  background: #176b2c;
 
   color: white;
 
-  font-size: 15px;
+  font-size: 20px;
 
   cursor: pointer;
 }
 
 
-/* EXAMPLES */
+/* ===============================
+   LISTENING
+================================ */
 
-.examples {
-  margin-top: 15px;
+.listening-text {
+  text-align: center;
 
-  color: #777;
+  padding: 0 15px 15px;
+
+  color: #d62828;
 
   font-size: 13px;
+
+  font-weight: bold;
 }
 
-.examples p {
-  margin: 4px 0;
-}
 
+/* ===============================
+   MOBILE
+================================ */
 
-/* MOBILE */
-
-@media (max-width: 650px) {
+@media (max-width: 600px) {
 
   .voice-assistant {
-    right: 10px;
-    bottom: 10px;
-
-    width: calc(100vw - 20px);
-
-    padding: 18px;
+    right: 12px;
+    bottom: 12px;
   }
 
-  .assistant-input-area {
-    flex-wrap: wrap;
+  .assistant-box {
+    width: calc(100vw - 24px);
   }
 
-  .assistant-input-area input {
-    width: 100%;
-    flex-basis: 100%;
-  }
-
-  .mic-button {
-    flex: 1;
-  }
-
-  .send-button {
-    flex: 1;
+  .assistant-floating-button {
+    width: 58px;
+    height: 58px;
   }
 }
