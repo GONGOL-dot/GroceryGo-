@@ -3,7 +3,7 @@ import axios from "axios";
 import "./AdminProducts.css";
 
 
-const API_URL = "https://grocerygo-ecom.onrender.com//products";
+const API_URL = "https://grocerygo-ecom-eb51.onrender.com//products";
 
 const AdminProducts = () => {
   const [products, setProducts] = useState([]);

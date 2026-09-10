@@ -48,7 +48,7 @@ function Register() {
     try {
       // CHECK EMAIL ALREADY EXISTS
       const checkUser = await fetch(
-        `https://grocerygo-ecom.onrender.com//users?email=${formData.email}`
+        `https://grocerygo-ecom-eb51.onrender.com/users?email=${formData.email}`
       );
 
       const existingUsers = await checkUser.json();
@@ -61,7 +61,7 @@ function Register() {
 
       // REGISTER NEW USER
       const response = await fetch(
-        "https://grocerygo-ecom.onrender.com/users",
+        "https://grocerygo-ecom-eb51.onrender.com/users",
         {
           method: "POST",
           headers: {

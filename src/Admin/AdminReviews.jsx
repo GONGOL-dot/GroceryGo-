@@ -8,7 +8,7 @@ const AdminReviews = () => {
   const getReviews = async () => {
     try {
       const response = await axios.get(
-        "https://grocerygo-ecom.onrender.com//reviews"
+        "https://grocerygo-ecom-eb51.onrender.com/reviews"
       );
 
       setReviews(response.data);
@@ -23,7 +23,7 @@ const AdminReviews = () => {
 
   const deleteReview = async (id) => {
     await axios.delete(
-      `https://grocerygo-ecom.onrender.com//reviews/${id}`
+      `https://grocerygo-ecom-eb51.onrender.com/reviews/${id}`
     );
 
     getReviews();

@@ -51,7 +51,7 @@ function Otp() {
       };
 
       const response = await fetch(
-        "/https://grocerygo-ecom.onrender.com/orders",
+        "https://grocerygo-ecom-eb51.onrender.com/orders",
         {
           method: "POST",
           headers: {
@@ -66,7 +66,7 @@ function Otp() {
       }
 
       await fetch(
-        "https://grocerygo-ecom.onrender.com/payments",
+        "https://grocerygo-ecom-eb51.onrender.com/payments",
         {
           method: "POST",
           headers: {

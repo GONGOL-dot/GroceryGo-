@@ -16,7 +16,7 @@ function SubCategory() {
   // ================= LOAD PRODUCTS =================
 
   useEffect(() => {
-    fetch("https://grocerygo-ecom.onrender.com//products")
+    fetch("https://grocerygo-ecom-eb51.onrender.com/products")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Products loading failed");

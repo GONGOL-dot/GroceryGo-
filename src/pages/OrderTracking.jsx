@@ -12,7 +12,7 @@ const Orders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch("https://grocerygo-ecom.onrender.com/orders")
+    fetch("https://grocerygo-ecom-eb51.onrender.com/orders")
       .then((res) => res.json())
       .then((data) => setOrders(data))
       .catch((err) => console.log(err));

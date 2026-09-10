@@ -26,9 +26,9 @@ function AdminReports() {
     try {
       const [usersResponse, productsResponse, ordersResponse] =
         await Promise.all([
-          axios.get("https://grocerygo-ecom.onrender.com//users"),
-          axios.get("https://grocerygo-ecom.onrender.com//products"),
-          axios.get("https://grocerygo-ecom.onrender.com//orders"),
+          axios.get("https://grocerygo-ecom-eb51.onrender.com/users"),
+          axios.get("https://grocerygo-ecom-eb51.onrender.com/products"),
+          axios.get("https://grocerygo-ecom-eb51.onrender.com/orders"),
         ]);
 
       setUsers(usersResponse.data || []);
